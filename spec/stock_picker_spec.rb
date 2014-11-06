@@ -25,10 +25,12 @@ describe 'stock_pick' do
 
   context "output" do
     it "should return an array" do
-      expect{stock_pick([2,3])}.to be_a(Array)
+      expect(stock_pick([2,3])).to be_a(Array)
     end
 
-    it "should return exactly two days"
+    it "should return exactly two days" do
+      expect(stock_pick([2,3]).length).to eq(2)
+    end
     it "should return days that maximize return"
     it "should return days in sequence"
     it "should return the pair with the fewest intervening days"
