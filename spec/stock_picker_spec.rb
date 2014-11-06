@@ -31,7 +31,10 @@ describe 'stock_pick' do
     it "should return exactly two days" do
       expect(stock_pick([2,3]).length).to eq(2)
     end
-    it "should return days that maximize return"
+    it "should return days that maximize return" do
+      expect(stock_pick([1,2,3,1])).to eq([0,2])
+    end
+    
     it "should return days in sequence"
     it "should return the pair with the fewest intervening days"
   end
