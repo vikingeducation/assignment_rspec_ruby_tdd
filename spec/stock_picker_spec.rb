@@ -24,7 +24,10 @@ describe 'stock_pick' do
   end
 
   context "output" do
-    it "should return an array"
+    it "should return an array" do
+      expect{stock_pick([2,3])}.to be_a(Array)
+    end
+
     it "should return exactly two days"
     it "should return days that maximize return"
     it "should return days in sequence"
