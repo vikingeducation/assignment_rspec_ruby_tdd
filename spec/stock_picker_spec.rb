@@ -3,7 +3,7 @@ require 'stock_picker'
 describe 'stock_pick' do
   context "input" do
     it "takes an array as an input" do
-      expect{stock_pick([1,0])}.not_to raise_error
+      expect{stock_pick([1,2])}.not_to raise_error
     end
 
     it "raises an error if innapropriate input" do
@@ -11,14 +11,14 @@ describe 'stock_pick' do
     end
 
     it "should take numbers for days" do
-      expect{stock_pick([1,0])}.not_to raise_error
+      expect{stock_pick([1,2])}.not_to raise_error
     end
 
     it "should raise error if array inputs are non-numeric" do
       expect{stock_pick([1,"yjiwo"])}.to raise_error
     end
 
-    it "should not accept negative numbers" do
+    it "should not accept numbers less than or equal to 0" do
       expect{stock_pick([-1, 1])}.to raise_error(ArgumentError)
     end
   end
