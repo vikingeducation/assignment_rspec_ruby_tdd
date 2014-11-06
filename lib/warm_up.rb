@@ -23,5 +23,28 @@ def stock_picker(stocks)
 
   [buy, sell]
 
-
 end
+
+def anagram(word)
+  raise "This doesn't work with spaces, breh!" unless word.split(" ").length == 1
+
+  word.upcase!
+  letter_count = frequency(word)
+
+  anagrams = []
+  File.open('TWL06.txt').each do |line|
+    if letter_count == frequency(line.strip)
+      anagrams << line.strip unless line.strip == word
+    end
+  end
+  anagrams
+end
+
+def frequency(word)
+  array = Hash.new(0)
+  word.chars.each do |char|
+    array[char.upcase] += 1
+  end
+  array
+end
+
