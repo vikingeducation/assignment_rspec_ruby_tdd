@@ -6,7 +6,18 @@ describe 'stock_pick' do
       expect{stock_pick([1,0])}.not_to raise_error
     end
 
-    it "should take numbers for days"
+    it "raises an error if innapropriate input" do
+      expect{stock_pick(1)}.to raise_error
+    end
+
+    it "should take numbers for days" do
+      expect{stock_pick([1,0])}.not_to raise_error
+    end
+
+    it "should raise error if array inputs are non-numeric" do
+      expect{stock_pick([1,"yjiwo"])}.to raise_error
+    end    
+
     it "should not accept negative numbers"
   end
 
