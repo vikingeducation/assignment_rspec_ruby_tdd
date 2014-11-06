@@ -16,9 +16,11 @@ describe 'stock_pick' do
 
     it "should raise error if array inputs are non-numeric" do
       expect{stock_pick([1,"yjiwo"])}.to raise_error
-    end    
+    end
 
-    it "should not accept negative numbers"
+    it "should not accept negative numbers" do
+      expect{stock_pick([-1, 1])}.to raise_error(ArgumentError)
+    end
   end
 
   context "output" do
