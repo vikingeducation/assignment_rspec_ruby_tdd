@@ -30,6 +30,10 @@ describe "#stock_picker" do
 		expect(stock_picker([25, 30, 24, 32, 35, 30, 40, 38, 0])).to eq([2,6])
 	end
 
+	it 'should properly handle double numbers' do
+		expect(stock_picker([25, 30, 24, 24, 35, 30, 40, 38, 38])).to eq([2,6])
+	end
+
 	specify "the first value is lower than the second" do
 		result = stock_picker([1,4,3,6,7,8,4,0])
 		expect(result[0]).to  be < result[1]
