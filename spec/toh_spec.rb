@@ -34,15 +34,22 @@ describe TowerOfHanoi do
       context '#move' do
         it "should perform a valid move" do
           subject.move('ab')
-          expect(subject.board).to eq({"a" => [1,1], "b" => [1], "c" => []})
+          expect(subject.board).to eq({"a" => [1,2], "b" => [3], "c" => []})
         end
 
         context 'with an invalid move' do
           it "should not move a peg onto itself" do
             expect{subject.move('aa')}.to output(/nvalid/).to_stdout
           end
-          it "should not move from an empty slot"
-          it "should not move a larger onto a smaller piece"
+
+          it "should not move from an empty slot" do
+            expect{subject.move('ba')}.to output(/nvalid/).to_stdout
+          end
+
+          it "should not move a larger onto a smaller piece" do
+            subject.move('ab')
+            expect{subject.move('ab')}.to output(/nvalid/).to_stdout
+          end
         end
       end
 
