@@ -1,5 +1,4 @@
 require 'pry'
-
 class Game
   def initialize(height = 3)
     @board = Board.new(height)
@@ -56,16 +55,21 @@ class Board
 
   def make_move(move)
     return false unless valid?(move)
-    first, second = move[0], move[1]
+    first, second = parse(move)
     towers[second].push(towers[first].pop)
   end
 
 
   private
 
+  #changes input to cardinal to access array
+  def parse(move)
+    return move[0] - 1, move[1] - 1
+  end
+
   def valid?(move)
     return false unless well_formed?(move) && in_range?(move)
-    first, second = move[0], move[1]
+    first, second = parse(move)
     return false if towers[first].empty?
     towers[second].empty? || towers[first][-1] < towers[second][-1]
   end
@@ -95,7 +99,6 @@ class Player
   end
 
   def take_turn
-    move = nil
 
     loop do
       print "Input your move: "
@@ -105,6 +108,7 @@ class Player
       move.map!{ |x| x.to_i }
 
       break if @board.make_move(move) || quitting?
+      puts "That didn't work. Try again."
     end
 
   end

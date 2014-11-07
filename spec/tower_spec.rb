@@ -104,6 +104,17 @@ describe Board do
       expect(subject.make_move([2, 1])).to equal(false)
     end
 
+    it 'moves the disk if a move is valid' do
+      subject.make_move([1,2])
+      expect(subject.towers).to eq([ ["ooo","oo"],["o"], [] ])
+    end
+
+    it 'does not make the move if move is invalid' do
+      subject.make_move([1,2])
+      subject.make_move([1,2])
+      expect(subject.towers).to eq([ ["ooo","oo"],["o"], [] ])
+    end
+
   end
 
   describe '#render' do
