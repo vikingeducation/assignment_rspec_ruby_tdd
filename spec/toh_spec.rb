@@ -18,12 +18,24 @@ describe TowerOfHanoi do
   end
 
   describe '#play' do
-    it "should take the player's input"
+    it "should take player input" do
+      allow(subject).to receive(:gets).and_return('ac')
+      subject.stub(:win).and_return(true)
+      expect(subject).to receive(:gets)
+      subject.play
+    end
 
     it "should send the inputs to a move method" do
       allow(subject).to receive(:move)
+      subject.stub(:win).and_return(true)
       expect(subject).to receive(:move)
       subject.play
+    end
+
+    it "should stop when the player has won" do
+      subject.stub(:gets).and_return('ac','ab','cb','ac','ba','bc','ac')
+      subject.play
+      expect(subject.board).to eq({"a" => [], "b" => [], "c" => [1, 2, 3]})
     end
 
     context '#move' do
@@ -52,25 +64,6 @@ describe TowerOfHanoi do
           end
         end
       end
-
-      it "should display a victory message on completion"
     end
   end
 end
-
-# Board
-
-# the game board should be an array with three arrays inside (happy)
-# the game begins with all tiles on the left peg (happy)
-# the game begins with a specified number of tiles (happy)
-
-# Play
-
-# the game takes inputs (happy)
-# invalid inputs are requested again (sad)
-# the inputs are sent to a move method (happy)
-# valid moves are performed (happy)
-# invalid moves fail (sad)...
-#  -an empty slot cannot be moved from
-#  -a larger piece cannot be placed on a smaller piece
-# a completed game returns a victory message (happy)

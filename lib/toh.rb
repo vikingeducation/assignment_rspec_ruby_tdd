@@ -3,10 +3,16 @@ class TowerOfHanoi
 
   def initialize(height=3)
     @board = {"a" => (1..height).to_a, "b" => [], "c" => [] }
+    @height = height
   end
 
   def play
-    move('ab')
+    loop do
+      player_choice = gets.chomp
+      puts player_choice
+      move(player_choice)
+      break if win
+    end
   end
 
   def move(coordinates)
@@ -18,6 +24,8 @@ class TowerOfHanoi
     end
   end
 
-
+  def win
+    @board["c"].length == @height
+  end
 
 end
