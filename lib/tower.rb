@@ -1,4 +1,3 @@
-require 'pry'
 class Game
   def initialize(height = 3)
     @board = Board.new(height)
