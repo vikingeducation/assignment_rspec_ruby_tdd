@@ -47,7 +47,7 @@ class Board
 
   def render
     (@height-1).downto(0) do |level|
-      towers.each {|t| print (t[level] || " ").ljust(@height) }
+      towers.each {|t| print (t[level] || " ").ljust(@height + 1) }
       puts "\n"
     end
   end
