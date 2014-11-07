@@ -4,16 +4,16 @@ describe TowerOfHanoi do
 
   describe '#board' do
     it "should be an array" do
-      expect(subject.board).to be_a(Array)
+      expect(subject.board).to be_a(Hash)
     end
 
     it "should start with all tiles on the first peg" do
-      expect(subject.board[0].length).to eq(3)
+      expect(subject.board["a"].length).to eq(3)
     end
 
     it "should populate with a specified number of tiles" do
       new_game = TowerOfHanoi.new(5)
-      expect(new_game.board[0].length).to eq(5)
+      expect(new_game.board["a"].length).to eq(5)
     end
   end
 
@@ -32,11 +32,17 @@ describe TowerOfHanoi do
       end
 
       context '#move' do
-        it "should perform a valid move"
+        it "should perform a valid move" do
+          subject.move('ab')
+          expect(subject.board).to eq({"a" => [1,1], "b" => [1], "c" => []})
+        end
+
         context 'with an invalid move' do
+          it "should not move a peg onto itself" do
+            expect{subject.move('aa')}.to output(/nvalid/).to_stdout
+          end
           it "should not move from an empty slot"
           it "should not move a larger onto a smaller piece"
-          it "should not move a peg onto itself"
         end
       end
 
