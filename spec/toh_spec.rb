@@ -19,18 +19,29 @@ describe TowerOfHanoi do
 
   describe '#play' do
     it "should take the player's input"
-    it "should re-request after invalid inputs"
-    it "should send the inputs to a move method"
 
-    context '#move' do
-      it "should perform a valid move"
-      context 'with an invalid move' do
-        it "should not move from an empty slot"
-        it "should not move a larger onto a smaller piece"
-      end
+    it "should send the inputs to a move method" do
+      allow(subject).to receive(:move)
+      expect(subject).to receive(:move)
+      subject.play
     end
 
-    it "should display a victory message on completion"
+    context '#move' do
+      it "should re-request after invalid inputs" do
+        expect{subject.move('12')}.to output(/nvalid/).to_stdout
+      end
+
+      context '#move' do
+        it "should perform a valid move"
+        context 'with an invalid move' do
+          it "should not move from an empty slot"
+          it "should not move a larger onto a smaller piece"
+          it "should not move a peg onto itself"
+        end
+      end
+
+      it "should display a victory message on completion"
+    end
   end
 end
 
