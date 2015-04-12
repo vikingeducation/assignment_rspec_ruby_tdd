@@ -1,5 +1,2 @@
-assignment_rspec_ruby_tdd
-=========================
-
-Test driven awesome.
-[Trevor Elwell](http://trevorelwell.me)'s Assignment
+TDD Assignment
+By [Trevor Elwell](http://trevorelwell.me)
