@@ -4,7 +4,7 @@ require_relative('board.rb')
 class TowersOfHanoi
 	attr_reader :height
 
-	def initialize(height)
+	def initialize(height = 3)
 		@height = height
 		@board = Board.new(@height)
 	end
