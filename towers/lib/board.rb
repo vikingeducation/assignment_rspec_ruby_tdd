@@ -7,6 +7,10 @@ class Board
 		1.upto(height) { |i| @board[0].push(i) }
 	end
 
+	def get_board
+		@board
+	end
+
 	def render
 		clear
 		# Create output buffer (string)

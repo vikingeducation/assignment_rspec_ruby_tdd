@@ -28,10 +28,10 @@ class TowersOfHanoi
 	def is_valid?(move)
 		return false if move.length != 2
 		return false if move.any?{|item| !item.is_a?(Fixnum)}
-		return false if @board.board[move[0]-1] == []
+		return false if @board.get_board[move[0]-1] == []
 		return false if move.any?{|item| item < 1 || item > 3}
-		if !@board.board[move[1]-1].first.nil? && !@board.board[move[0]-1].first.nil?
-			if @board.board[move[0]-1].first > @board.board[move[1]-1].first
+		if !@board.get_board[move[1]-1].first.nil? && !@board.get_board[move[0]-1].first.nil?
+			if @board.get_board[move[0]-1].first > @board.get_board[move[1]-1].first
 				return false
 			end
 		end
