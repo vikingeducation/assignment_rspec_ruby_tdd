@@ -47,6 +47,12 @@ describe TowersOfHanoi do
 	end
 
 	describe '#victory_ending' do
+		let(:board){ double(:render => nil, :is_victory? => true, :get_board => [[2,3,4],[1],[]]) }
+
+    before do
+      allow(Board).to receive(:new).and_return(board)
+    end
+    
 		it 'puts YOU WIN to stdout' do
 			expect{subject.victory_ending}.to output(/YOU WIN/).to_stdout
 		end

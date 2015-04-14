@@ -1,7 +1,7 @@
 class Board
 	attr_reader :board
 
-	def initialize(height)
+	def initialize(height = 3)
 		@board = [[],[],[]]
 		@height = height
 		1.upto(height) { |i| @board[0].push(i) }
@@ -40,7 +40,7 @@ class Board
 	def is_victory?
 		victory_board = [[],[],[]]
 		1.upto(@height) { |i| victory_board[2].push(i) }
-		return true if @board == victory_board
+		return true if get_board == victory_board
 		false
 	end
 end

@@ -2,46 +2,50 @@ require('board')
 
 # Tests for the Board of Towers of Hanoi
 describe Board do
-	let(:b){Board.new(4)}
 
-	it 'playing renders the board' do
-		expect(b).to receive(:print)
-		b.render
-	end	
+	describe "#render" do
+		before(:each) do
+      allow(Board).to receive(:print).and_return(nil)
+    end
 
-	it 'can clear the screen' do
-		expect{b.clear}.to_not raise_error
-	end
+		# it 'calls the print method' do
+		# 	expect(subject).to receive(:print)
+		# 	subject.render
+		# end	
 
-	it 'rendering the board calls clear' do
-		expect(b).to receive(:clear)
-		b.render
+		# it 'can clear the screen' do
+		# 	expect(subject.clear).to_not output(//).to_stdout
+		# end
+
+		it 'calls clear' do
+			expect(subject).to receive(:clear)
+			subject.render
+		end
 	end
 
 	describe "#move" do
-		it 'moves the board around properly' do
-			b.move([1,2])
-			expect(b.board).to eq([[2,3,4],[1],[]])
+		it 'can make a move' do
+			subject.move([1,2])
+			expect(subject.get_board).to eq([[2,3],[1],[]])
 		end
 
-		it 'moves the board around properly more' do
-			b.move([1,2])
-			b.move([1,3])
-			expect(b.board).to eq([[3,4],[1],[2]])
+		it 'can make multiple moves' do
+			subject.move([1,2])
+			subject.move([1,3])
+			expect(subject.get_board).to eq([[3],[1],[2]])
 		end
 	end
 
 	describe "#is_victory?" do
 
 		it 'returns true with winning board' do
-			# QUESTION: Is this a valid way to do this?
-			b.instance_variable_set(:@board, [[],[],[1,2,3,4]])
-			expect(b.is_victory?).to eq(true)
+			allow(subject).to receive(:get_board).and_return([[],[],[1,2,3]])
+			expect(subject.is_victory?).to eq(true)
 		end
 		
 		it 'returns false with other board' do
-			b.instance_variable_set(:@board, [[],[1],[2,3,4]])
-			expect(b.is_victory?).to eq(false)
+			allow(subject).to receive(:get_board).and_return([[],[1],[2,3]])
+			expect(subject.is_victory?).to eq(false)
 		end
 	end
 end
