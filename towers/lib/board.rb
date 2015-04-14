@@ -29,4 +29,14 @@ class Board
 		system "clear"
 	end
 
+	def move(move)
+		@board[move[1]-1].unshift(@board[move[0]-1].shift)
+	end
+
+	def is_victory?
+		victory_board = [[],[],[]]
+		1.upto(@height) { |i| victory_board[2].push(i) }
+		return true if @board == victory_board
+		false
+	end
 end

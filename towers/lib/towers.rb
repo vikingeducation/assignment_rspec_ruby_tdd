@@ -1,5 +1,5 @@
 # Require the board
-require('board.rb')
+require_relative('board.rb')
 
 class TowersOfHanoi
 	attr_reader :height
@@ -11,13 +11,11 @@ class TowersOfHanoi
 
 	# Play the game
 	def play(options = {})
-		loop do
-			@board.render
-			puts options[:error] if options[:error]
-			current_move = get_input
-			is_valid?(current_move) ? @board.move(current_move) : play({:error => "Invalid input"})
-			break if options[:test_mode] == 1 
-		end
+		@board.render
+		puts options[:error] if options[:error]
+		current_move = get_input.split(",").map(&:to_i)
+		is_valid?(current_move) ? @board.move(current_move) : play({:error => "Invalid input"})
+		@board.is_victory? ? victory_ending : play
 	end
 
 	# Get input from user
@@ -28,12 +26,20 @@ class TowersOfHanoi
 
 	# Is the move valid?
 	def is_valid?(move)
-		move = move.split(",").map(&:to_i)
-		valid = true
-		valid = false if move.length != 2
-		valid = false if move.any?{|item| !item.is_a?(Integer)}
-		valid = false if @board.board[move[0]] == []
-		valid = false if move.any?{|item| item < 1 || item > 3}
-		valid
+		return false if move.length != 2
+		return false if move.any?{|item| !item.is_a?(Fixnum)}
+		return false if @board.board[move[0]-1] == []
+		return false if move.any?{|item| item < 1 || item > 3}
+		if !@board.board[move[1]-1].first.nil? && !@board.board[move[0]-1].first.nil?
+			if @board.board[move[0]-1].first > @board.board[move[1]-1].first
+				return false
+			end
+		end
+		true
+	end
+
+	def victory_ending
+		@board.render
+		puts "YOU WIN!"
 	end
 end
