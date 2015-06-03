@@ -34,4 +34,62 @@ describe Warmup do
 
   end
 
+
+  describe "#anagrams" do
+
+    context "with inputted argument" do
+
+      it "accepts single word string inputs" do
+        expect{ subject.anagrams("looter") }.not_to raise_error
+      end
+
+      it "raises an error for non-string input" do
+        expect{ subject.anagrams(475) }.to raise_error("Input must be a string")
+      end
+
+      it "raises an error for multi-word input" do
+        expect{ subject.anagrams("cheese puffs") }.to raise_error("Input must be a single word (no spaces)")
+      end
+
+    end
+
+
+=begin  ### This feels untestable?  Moving on for now and will ask about later ###
+
+    context "accessing dictionary" do
+      #let(:dic) { "star\npots\nbread\ntars\nstop\nmeat" }
+      #let(:dictionary) { ["star","pots","bread","tars","stop","meat"] }
+
+      it "calls readlines on the dictionary" do  # did this actually test anything?
+        dic = double("IO")
+        allow(dic).to receive(:readlines).and_return(["star","pots","bread","tars","stop","meat"])
+        expect{ (dic.readlines) }.not_to raise_error
+      end
+
+      it "raises an error if dictionary file cannot be accessed"
+
+      it "loads dictionary words as elements in array"
+
+    end
+=end
+
+
+    context "processing words" do
+
+      it "returns all words that are anagrams" do
+        expect(subject.anagrams("spot")).to eq(["pots","stop"])
+      end
+
+      it "returns nil if there are no anagrams" do
+        expect(subject.anagrams("hand")).to eq([])
+      end
+
+      it "finds anagrams even if there are capital letters in the input" do
+        expect(subject.anagrams("Rats")).to eq(["star","tars"])
+      end
+
+    end
+
+  end
+
 end
