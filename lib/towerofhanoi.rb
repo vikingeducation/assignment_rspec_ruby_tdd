@@ -1,5 +1,4 @@
 require "board"
-require "player"
 
 class TowerOfHanoi
 
@@ -7,12 +6,19 @@ class TowerOfHanoi
     raise "Discs fewer than 3" if number_of_discs < 3
 
     @board = Board.new(number_of_discs)
-    @player = Player.new
+    #@player = Player.new
+  end
+
+
+  def play
+    #loop will start here
+    get_move
+
   end
 
 
   def get_move
-    @player.input_move
+    gets.chomp
   end
 
 end

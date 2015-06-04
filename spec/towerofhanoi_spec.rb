@@ -20,15 +20,21 @@ describe TowerOfHanoi do
   end
 
 
-  describe "#get_move" do
-    let(:t) { TowerOfHanoi.new(3) }
-    let(:@player) { Player.new }
 
-    it "calls #input_move on player" do
-      #player = double("player")
-      allow(@player).to receive(:input_move).and_return(true)
-      expect(t.get_move).to eq(:input_move)
+  describe "#play" do
+    let(:game) { TowerOfHanoi.new(3) }
+
+    it "should take a turn" do
+      expect(game).to receive(:get_move).and_return([0,1])
+      game.play
     end
+
+  end
+
+
+  describe "#get_move" do
+
+    it "calls #input_move on player"
 
   end
 
