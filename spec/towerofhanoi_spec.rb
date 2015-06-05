@@ -24,10 +24,10 @@ describe TowerOfHanoi do
   describe "#play" do
     let(:game) { TowerOfHanoi.new(3) }
 
-    it "should take a turn" do
-      expect(game).to receive(:get_move).and_return([0,1])
-      game.play
-    end
+    #it "should take a turn with a valid move" do
+    #  expect(game).to receive(:get_move).and_return([1,2])
+      #game.play
+    #end
 
   end
 
@@ -71,7 +71,6 @@ describe TowerOfHanoi do
       expect(game).to receive(:get_move)
       game.validate_move("1,2,3")
     end
-
 
   end
 

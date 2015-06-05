@@ -1,7 +1,9 @@
 class Board
   attr_accessor :rods
+  attr_reader :victory
 
   def initialize(number_of_discs)
+    @victory = false
     @rods = Array.new(3) { Array.new }
 
     number_of_discs.downto(1) { |disc| @rods[0] << disc }
@@ -9,7 +11,7 @@ class Board
 
 
   def render
-
+    print @rods
   end
 
 
@@ -19,11 +21,20 @@ class Board
     to_rod = move_array[1] - 1
 
     move_success = false
-    move_success = true if move_available?(from_rod, to_rod)
 
-    @rods[to_rod] << @rods[from_rod].pop
+    if move_available?(from_rod, to_rod)
+      move_success = true
+      @rods[to_rod] << @rods[from_rod].pop
+      render
+    end
 
+    check_victory
     move_success
+  end
+
+
+  def check_victory
+    @victory = true if @rods[0].empty? && ( @rods[1].empty? || @rods[2].empty?)
   end
 
 
@@ -31,7 +42,7 @@ class Board
 
 
   def move_available?(from, to)
-    !rod_empty?(from) & ( rod_empty?(to) || from_less_than_to?(from, to) )
+    !rod_empty?(from) && ( rod_empty?(to) || from_less_than_to?(from, to) )
   end
 
   def rod_empty?(rod)

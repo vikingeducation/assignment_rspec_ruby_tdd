@@ -1,4 +1,4 @@
-require "board"
+require "./board"
 
 class TowerOfHanoi
 
@@ -6,22 +6,32 @@ class TowerOfHanoi
     raise "Discs fewer than 3" if number_of_discs < 3
 
     @board = Board.new(number_of_discs)
-    #@player = Player.new
+    @turn_count = 0
   end
 
 
   def play
-    #game loop
-      #loop will start here
+    puts "Welcome to Tower of Hanoi!  Let's get started."
+    # game loop
+    loop do
+
+      # turn loop
+      loop do
         move = get_move
-        @board.process_move?(move)
-        #send to board (accept & render vs reject)
-      #end
+        move_success = @board.process_move?(move)
+        if move_success
+          break
+        else
+          puts "That move is not available on the board."
+        end
+      end
 
-      #finish turn
+      @turn_count += 1
 
-      #check victory to break
-    #end
+      break if @board.victory
+    end
+
+    end_game
   end
 
 
@@ -44,8 +54,17 @@ class TowerOfHanoi
     if from_rod.between?(1,3) && to_rod.between?(1,3)
       [from_rod, to_rod]
     else
+      puts "That input appears invalid.  Please try again."
       get_move
     end
+  end
+
+
+  private
+
+
+  def end_game
+    puts "Thanks for playing!  You completed the puzzle in #{@turn_count} turns."
   end
 
 end
