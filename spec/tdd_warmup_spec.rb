@@ -45,7 +45,6 @@ describe Warmups do
 
     end
 
-
     it "returns the most profitable days" do
 
       expect(w.stock_picker(a)).to eq([2,6])
@@ -92,7 +91,7 @@ describe Warmups do
 
     end
 
-    it "the words in the array should all have the same length as the argument" do 
+    specify "the words in the array should all have the same length as the argument" do
 
       result = w.anagrams(word)
 
@@ -102,9 +101,9 @@ describe Warmups do
 
     end
 
-    it "the words in the array should exist in english" do
+    specify "the words in the array should exist in english" do
 
-      dictionary = ["ROOTLE", "TOOLER", "HELLO", "WORLD", "RETOOL"]
+      dictionary = ["rootle", "tooler", "hello", "world", "retool"]
       result = w.anagrams(word)
 
       check_english = result.all? {|w| dictionary.include?(w)}
@@ -113,9 +112,37 @@ describe Warmups do
 
     end
 
-    it "the words in the array should have the exact same letters as the argument"
+    specify "the words in the array should have the exact same letters as the argument" do
 
-    specify "the orginal word sent as argument is not included in the return array"
+      letters_in_word = word.split("").sort
+
+      result = w.anagrams(word)
+
+      check_all_letters_included = result.all? { |w| w.split("").sort == letters_in_word}
+
+      expect(check_all_letters_included).to be true
+
+    end
+
+    specify "the orginal word sent as argument is not included in the return array" do
+
+      result = w.anagrams(word)
+
+      expect(result.include?(word)).to be false
+
+    end
+
+    it "should not return an empty array if there are possible anagrams" do
+
+      expect(w.anagrams(word)).not_to eq([])
+
+    end
+
+    it "should return an empty array if there are no possible anagrams" do
+
+      expect(w.anagrams("zygote")).to eq([])
+
+    end
 
 
   end

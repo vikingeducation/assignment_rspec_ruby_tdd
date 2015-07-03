@@ -35,5 +35,26 @@ class Warmups
   end
 
 
+  def anagrams(word)
+
+    unless word.is_a?(String) && word.split(" ").length == 1
+      raise "Only accepts one word"
+    end
+
+    anagram_words = []
+
+    dictionary = %w(a abc looter tooler retool rootle zygote)
+
+    dictionary.each do |w|
+      if w.upcase.split("").sort == word.upcase.split("").sort
+        anagram_words << w unless w == word
+      end
+    end
+    p anagram_words
+    anagram_words
+
+  end
+
+
 end
 
