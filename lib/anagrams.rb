@@ -6,11 +6,15 @@ def anagrams(word)
 
   output = []
 
- test=word
+  test = word.split("").sort.join("")
   
   arr = IO.readlines("./lib/enable.txt")
 
-  
+  arr.each do |w|
+    if w.strip.split("").sort.join("") == test && w.strip != word
+      output << w.strip.upcase
+    end
+  end
 
   output
 

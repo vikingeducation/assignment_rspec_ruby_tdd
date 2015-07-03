@@ -21,7 +21,7 @@ describe '#anagrams' do
   end
 
   it "should look for anagrams" do
-    expect(anagrams("looter")).to eq(["RETOOL", "ROOTLE", "TOOLER"])
+    expect(anagrams("looter")).to eq(["RETOOL", "TOOLER"])
   end
 
 end
