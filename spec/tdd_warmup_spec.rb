@@ -3,11 +3,11 @@ require_relative "../lib/tdd_warmups.rb"
 describe Warmups do
 
   let (:w) {Warmups.new}
+  
+  describe "#stock_picker" do
   let (:a) {[44, 30, 24, 32, 35, 30, 40, 38, 15]}
   let (:b) {[30, 40]}
   let (:c) {[30, 20, 10]}
-
-  describe "#stock_picker" do
 
     it "should return error if no arguments" do
 
@@ -59,6 +59,63 @@ describe Warmups do
       expect(w.stock_picker(c)).to eq([0,0])
 
     end
+
+  end
+
+  describe "#anagrams" do
+
+    let (:word){"looter"}
+
+    it "should raises error if no arguments" do
+
+      expect{w.anagrams()}.to raise_error(ArgumentError)
+
+    end
+
+    it "raises an error if argument is not a string" do
+
+      number = 33
+      expect{w.anagrams(number)}.to raise_error("Only accepts one word")
+
+    end
+
+    it "should return an error if sent more than one word" do
+
+      two_words = "Hello World"
+      expect{w.anagrams(two_words)}.to raise_error("Only accepts one word")
+
+    end
+
+    it "should return an array" do
+
+      expect(w.anagrams(word)).to be_a(Array)
+
+    end
+
+    it "the words in the array should all have the same length as the argument" do 
+
+      result = w.anagrams(word)
+
+      check_length = result.all? {|w| word.length == w.length}
+
+      expect(check_length).to be true
+
+    end
+
+    it "the words in the array should exist in english" do
+
+      dictionary = ["ROOTLE", "TOOLER", "HELLO", "WORLD", "RETOOL"]
+      result = w.anagrams(word)
+
+      check_english = result.all? {|w| dictionary.include?(w)}
+
+      expect(check_english).to be true
+
+    end
+
+    it "the words in the array should have the exact same letters as the argument"
+
+    specify "the orginal word sent as argument is not included in the return array"
 
 
   end
