@@ -4,19 +4,21 @@ describe Warmups do
 
   let (:w) {Warmups.new}
   let (:a) {[44, 30, 24, 32, 35, 30, 40, 38, 15]}
+  let (:b) {[30, 40]}
+  let (:c) {[30, 20, 10]}
 
   describe "#stock_picker" do
 
     it "should return error if no arguments" do
 
-      expect(w.stock_picker).to raise_error(ArgumentError)
+      expect{w.stock_picker()}.to raise_error(ArgumentError)
 
     end
 
     it "raise an error if argument is not an array" do
 
       string = "Hello"
-      expect(w.stock_picker(string)).to raise_error("Only accepts days in an array")
+      expect{w.stock_picker(string)}.to raise_error("Only accepts days in an array")
 
     end
 
@@ -46,7 +48,15 @@ describe Warmups do
 
     it "returns the most profitable days" do
 
-      expect(w.stock_picker(a)).to be eq([2.6])
+      expect(w.stock_picker(a)).to eq([2,6])
+      expect(w.stock_picker(b)).to eq([0,1])
+
+    end
+
+    it "returns 0 if there's no profit to be made" do
+
+      expect{w.stock_picker(c)}.to output("Sorry, no profit in these days :(\n").to_stdout
+      expect(w.stock_picker(c)).to eq([0,0])
 
     end
 
