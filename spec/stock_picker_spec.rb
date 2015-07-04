@@ -16,7 +16,7 @@ bad
 describe "#stockpicker" do
 
   it 'output is an array of number' do
-    expect(stock_picker[10,4]).to be_a(Array)
+    expect(stock_picker([1,5])).to be_a(Array)
   end
 
   it 'returns most profitable pair of days with more than two days' do
@@ -28,12 +28,11 @@ describe "#stockpicker" do
   end
 
   it 'returns error if input is not an integer' do
-
-    expect{stock_picker("string")}.to raise_error
+    expect{stock_picker("string")}.to raise_error(ArgumentError)
   end
 
   it 'returns a response to user if there are no profitable days' do
-    expect{stock_picker([50,7,0])}.to eq("Sorry!")
+    expect(stock_picker([50,7,0])).to eq("Sorry!")
   end
 
 
