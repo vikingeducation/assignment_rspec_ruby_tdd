@@ -36,8 +36,10 @@ describe TestDrivenDevelopment do
   describe '#anagrams' do
 
     before(:each) do
+
       allow(File).to receive(:readlines).and_return(["retool",
-       "rootle", "tooler"])
+       "rootle", "tooler", "elbow"])
+      
     end
 
     it 'returns an array' do

@@ -3,16 +3,36 @@ class Board
 
   def initialize(x = 10,y = 10)    
 
-    @game_board = Array.new(x) { Array.new(y) { " " } }
-    p @game_board
+    @game_board = Array.new(x) { Array.new(y) { " "} }
+    rand_bomb_adder(x,y)
+    # puts @game_board
   end
   
-  def bomb_placement(x,y)
-    row = rand(0...x)
-    column = rand(0...y)
+  def rand_bomb_adder(x,y)
+    
+    (x).times do
+      rand_x_array=(0...x).to_a
+      rand_y_array =(0...y).to_a
+
+      rand_x_pos = rand_x_array.sample
+      rand_x_array.delete_at(rand_x_pos)
+
+      rand_y_pos = rand_y_array.sample
+      rand_y_array.delete_at(rand_y_pos)
+
+      @game_board[rand_x_pos][rand_y_pos] = "B"
+    end
+    @game_board
     
   end
+
+  # def render
+  #   p @game_board
+  # end
+
+
 end
+
 class Minesweeper
 
 

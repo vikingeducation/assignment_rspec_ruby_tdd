@@ -33,23 +33,51 @@ require 'minesweeper.rb'
 =end
 
 describe Board do
-  
+
+  let(:b){Board.new}
+  let(:b_custom){Board.new(12)}
+
   it "is a board" do
     expect(subject).to be_a(Board)
   end
-  let(:b){Board.new}
+  
+  
   describe "#initialize" do
         
-       it "creates the default gameplay board" do 
-          
-        expect(b.game_board).to be_a(Array)
-       end
-    let(:b_custom){Board.new(12)}
+    it "creates the default gameplay board" do 
+      
+      expect(b.game_board).to be_a(Array)
+    end
+   
+    
+    
     it "makes the custom sized board" do
       expect(b_custom.game_board.length).to eq(12) 
     end
+
   end
 
+  describe '#rand_bomb_select' do
 
+    it 'should return an array' do
+      expect(b_custom.rand_bomb_adder(12,12)).to be_a(Array)
+    end
+
+    it 'should include B somewhere in array' do
+      expect(b_custom.rand_bomb_adder(12,12).any? {|array| array.include?("B")}).to eq(true)
+    end
+
+    it 'should have x amount of Bombs in the array' do
+      expect(b_custom.rand_bomb_adder(12,12).count {|array| array.count("B")}).to eq(12)
+    end
+
+  end
+
+  describe '#'
 
 end
+
+  # describe '#'
+
+
+  
