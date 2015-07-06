@@ -7,6 +7,17 @@ class Board
     rand_bomb_adder(x,y)
     # puts @game_board
   end
+
+  def render
+
+    @game_board.each do |line|
+      line.each do |cell|
+        print cell
+      end
+      print "\n"
+    end
+  end
+
   
   def rand_bomb_adder(x,y)
     
@@ -26,9 +37,18 @@ class Board
     
   end
 
-  # def render
-  #   p @game_board
-  # end
+  def number_hints
+    @game_board.each_with_index do |line, index|
+      line.each_with_index do |cell, index_two|
+         if cell == "B" 
+            index_two > 0 ? @game_board[index][index_two -1] = 1 : @game_board[index][index_two -1]  = " "
+            @game_board[index][index_two +1] = 1
+          end
+      end
+    end
+     
+
+  end
 
 
 end

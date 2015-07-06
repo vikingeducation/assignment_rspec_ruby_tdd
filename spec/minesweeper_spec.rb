@@ -73,7 +73,14 @@ describe Board do
 
   end
 
-  describe '#'
+  describe '#number_hints' dp
+    
+    it "sets numbers adjacent to bombs" do
+      b.game_board[2][2] = "B"
+      expect(b.game_board[2][1]).to eq(1)
+    end
+
+  end
 
 end
 
