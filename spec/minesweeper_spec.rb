@@ -32,6 +32,61 @@ require 'minesweeper.rb'
 
 =end
 
+describe Cell do
+
+  let(:c){Cell.new}
+  
+  it "is a cell" do
+    expect(subject).to be_a(Cell)
+  end
+
+  describe '#initialize' do
+
+    it ' should create a cell' do
+      expect(c).to be_a(Cell)
+    end
+
+    it 'should create an type attribute for cell - blank at first' do
+      expect(c.type).to eq("blank")
+    end
+
+    it 'should create non visible cells at first' do
+      expect(c.visible).to eq(false)
+    end
+    
+  end
+
+  describe '#is_bomb?' do
+    
+    it 'should return false if cell type is not bomb' do
+      # c.type = "bomb"
+      expect(c.type == "bomb").to eq(false)
+    end
+
+    it 'should return true if cell type is bomb' do
+      c.type = "bomb"
+      expect(c.type == "bomb").to eq(true)
+    end
+
+  end
+
+  describe '#is_visible?' do
+
+    it 'should return false if cell is not visible' do
+      expect(c.is_visible?).to eq(false)
+    end
+  end
+
+  # describe '#is_number?' do
+
+  #   it 'should return false if c isnt number' do
+  #     expect(c.is_number?).to eq(false)
+  #   end
+
+  # end
+
+end
+
 describe Board do
 
   let(:b){Board.new}
@@ -73,7 +128,7 @@ describe Board do
 
   end
 
-  describe '#'
+
 
 end
 
