@@ -46,7 +46,7 @@ class Board
 
   def initialize(x = 10,y = 10)    
 
-    @game_board = Array.new(x) { Array.new(y) { c = Class.new } }
+    @game_board = Array.new(x) { Array.new(y) { Cell.new } }
     rand_bomb_adder(x,y)
     # puts @game_board
   end
@@ -74,7 +74,7 @@ class Board
       rand_y_pos = rand_y_array.sample
       rand_y_array.delete_at(rand_y_pos)
 
-      @game_board[rand_x_pos][rand_y_pos] = c.type = "bomb"
+      @game_board[rand_x_pos][rand_y_pos].type = "bomb"
     end
     @game_board
     

@@ -113,13 +113,17 @@ describe Board do
   end
 
   describe '#rand_bomb_select' do
+    
 
-    it 'should return an array' do
-      expect(b_custom.rand_bomb_adder(12,12)).to be_a(Array)
-    end
+    # it 'should return an object(cell)' do
+    #   b_custom.rand_bomb_adder(12,12)
+    #   expect(b_custom.game_board[3][3]).to be_a(Cell)
+    # end
 
     it 'should include B somewhere in array' do
-      expect(b_custom.rand_bomb_adder(12,12).any? {|array| array.include?("B")}).to eq(true)
+        
+       b_custom.rand_bomb_adder(12,12)
+      expect(b_custom.game_board.any? {|cell| cell.include?("bomb")}).to eq(true)
     end
 
     it 'should have x amount of Bombs in the array' do
@@ -129,14 +133,14 @@ describe Board do
   end
 
 
-  # describe '#number_hints' dp
+  describe '#number_hints' do
     
-  #   it "sets numbers adjacent to bombs" do
-  #     b.game_board[2][2] = "B"
-  #     expect(b.game_board[2][1]).to eq(1)
-  #   end
+    it "sets numbers adjacent to bombs" do
+      b.game_board[2][2].type = "bomb"
+      expect(b.game_board[2][1].value).to eq(1)
+    end
 
-  # end
+  end
 
 
 end
