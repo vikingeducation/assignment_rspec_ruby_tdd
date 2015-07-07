@@ -91,6 +91,7 @@ describe Board do
 
   let(:b){Board.new}
   let(:b_custom){Board.new(12)}
+  let(:b_small){Board.new(2)}
 
   it "is a board" do
     expect(subject).to be_a(Board)
@@ -120,15 +121,27 @@ describe Board do
     #   expect(b_custom.game_board[3][3]).to be_a(Cell)
     # end
 
-    it 'should include B somewhere in array' do
+    # it 'should include B somewhere in array' do
         
-       b_custom.rand_bomb_adder(12,12)
-      expect(b_custom.game_board.any? {|cell| cell.include?("bomb")}).to eq(true)
-    end
+      
+    #   # b_custom.game_board[1][1].type = "bomb"
+    #   b_small.rand_bomb_adder(2,2)
+    #   expect(b_small.game_board[1][1].type).to eq("bomb")
+    # end
 
-    it 'should have x amount of Bombs in the array' do
-      expect(b_custom.rand_bomb_adder(12,12).count {|array| array.count("B")}).to eq(12)
-    end
+    # it 'should have x amount of Bombs in the array' do
+    #   value = 0
+    #   b_small.rand_bomb_adder(2, 2)
+    #   b_small.game_board.each_with_index do |row, index|
+    #     row.each_with_index do |cell, cell_index|
+    #       if b_small.game_board[index][cell_index].type == "bomb"
+    #         value +=1
+    #       end
+    #     end
+    #   end
+    #   expect(value).to eq(3)
+    # end
+                
 
   end
 
@@ -137,7 +150,9 @@ describe Board do
     
     it "sets numbers adjacent to bombs" do
       b.game_board[2][2].type = "bomb"
+      b.number_hints_horz
       expect(b.game_board[2][1].value).to eq(1)
+      expect(b.game_board[2][3].value).to eq(1)
     end
 
   end

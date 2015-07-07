@@ -48,14 +48,17 @@ class Board
 
     @game_board = Array.new(x) { Array.new(y) { Cell.new } }
     rand_bomb_adder(x,y)
+    number_hints
     # puts @game_board
+    render
   end
 
   def render
 
     @game_board.each do |line|
       line.each do |cell|
-        print cell
+        print cell.value 
+        print cell.type
       end
       print "\n"
     end
@@ -80,19 +83,21 @@ class Board
     
   end
 
-  def number_hints
+  def number_hints_horz
     @game_board.each_with_index do |line, index|
       line.each_with_index do |cell, index_two|
-         if cell == "B" 
-            index_two > 0 ? @game_board[index][index_two -1] = 1 : @game_board[index][index_two -1]  = " "
-            @game_board[index][index_two +1] = 1
+        if @game_board[index][index_two].type == "bomb"
+          if index_two > 0 && index_two < line.length - 1
+            @game_board[index][index_two - 1].value += 1
+            @game_board[index][index_two + 1].value += 1
           end
+        end
       end
     end
-     
-
   end
 
+  def number_hints_vert
+   end
 
 end
 
