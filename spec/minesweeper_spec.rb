@@ -147,17 +147,36 @@ describe Board do
 
 
   describe '#number_hints' do
-    
+    let(:b_hints){Board.new(4,4)}
     it "sets numbers adjacent to bombs" do
-      b.game_board[2][2].type = "bomb"
-      b.number_hints_horz
-      expect(b.game_board[2][1].value).to eq(1)
-      expect(b.game_board[2][3].value).to eq(1)
+      b_hints.game_board[2][2].type = "bomb"
+      b_hints.number_hints_horz
+
+      expect(b_hints.game_board[2][1].value).to eq(1)
+      expect(b_hints.game_board[2][3].value).to eq(1)
+    end
+    it "sets vertical numbers" do
+      b_hints.game_board[2][2].type = "bomb"
+      b_hints.number_hints_vert
+
+       expect(b_hints.game_board[3][2].value).to be > 0
+      expect(b_hints.game_board[1][2].value).to be > 0
+    end
+    it "set diagonal bottom right numbers" do
+      b_hints.game_board[2][2].type = "bomb"
+      b_hints.number_hints_dow_right
+  
+      expect(b_hints.game_board[3][3].value).to be > 0
+    end
+    it "sets diagonal up left numbers" do
+      b_hints.game_board[2][2].type = "bomb"
+      b_hints.number_hints_up_left
+      b_hints.render
+      expect(b_hints.game_board[1][1].value).to be > 0
     end
 
+
   end
-
-
 end
 
   # describe '#'

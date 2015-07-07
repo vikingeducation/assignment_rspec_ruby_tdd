@@ -47,10 +47,11 @@ class Board
   def initialize(x = 10,y = 10)    
 
     @game_board = Array.new(x) { Array.new(y) { Cell.new } }
-    rand_bomb_adder(x,y)
-    number_hints
-    # puts @game_board
-    render
+    # rand_bomb_adder(x,y)
+    # number_hints_horz
+    # number_hints_vert
+    # # puts @game_board
+   
   end
 
   def render
@@ -97,7 +98,48 @@ class Board
   end
 
   def number_hints_vert
-   end
+    @game_board.each_with_index do |line, index|
+      line.each_with_index do |cell, index_two|
+        if @game_board[index][index_two].type == "bomb"
+          if index > 0 && index < line.length - 1
+            @game_board[index - 1][index_two].value += 1
+            @game_board[index + 1][index_two].value += 1
+          end
+        end
+      end
+    end
+  end
+
+  def number_hints_dow_right
+    @game_board.each_with_index do |line, index|
+      line.each_with_index do |cell, index_two|
+        if @game_board[index][index_two].type == "bomb"
+          if (index > 0 && index < line.length - 1) && (index_two > 0 && index_two < line.length - 1)
+
+            @game_board[index + 1][index_two + 1].value += 1
+            
+          end
+        end
+      end
+    end
+  end
+
+  def number_hints_up_left
+    @game_board.each_with_index do |line, index|
+      line.each_with_index do |cell, index_two|
+         if @game_board[index][index_two].type == "bomb"
+          if (index > 0 && index < line.length - 1) && (index_two > 0 && index_two < line.length - 1)
+
+            @game_board[index - 1][index_two - 1].value += 1
+            
+          end
+        end
+     end
+    end
+  end
+
+
+   
 
 end
 
