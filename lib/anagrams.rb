@@ -5,9 +5,10 @@ def anagrams(string)
   anagrams = []
   File.readlines("enable.txt").each do |readline|
     r = readline.chomp
-    anagrams << r if r.chars.sort.join == alpha_string
+    anagrams << r.upcase if r.chars.sort.join == alpha_string
   end
 
+  anagrams.delete(string.upcase)
   anagrams
 end
 
