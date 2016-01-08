@@ -13,7 +13,6 @@ describe "warmup tests"  do
 
     let(:loud_string) {  some_string }
 
-
     describe "#get_shout" do
 
         it "takes a string and returns uppercase" do
