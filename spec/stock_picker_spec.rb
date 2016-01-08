@@ -13,8 +13,8 @@ describe '#stock_picker' do
 		expect(stock_picker([1,2]).class).to eq([].class)
 	end
 
-	it 'selects day to buy the stock' do
-		expect(stock_picker([44, 30, 24, 32, 35, 30, 40, 38, 15])).to eq([2,6].first)
-
+	it 'selects best days to buy and sell' do
+		expect(stock_picker([44, 30, 24, 32, 35, 30, 40, 38, 15])).to eq([2,6])
 	end
+
 end
