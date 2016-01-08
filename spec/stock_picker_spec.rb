@@ -5,13 +5,17 @@ describe "StockPicker" do
 
   let(:stock_picker){StockPicker.new()}
 
-  describe "checks for input information" do
-
-    # it "checks the minimum array length is 2" do
-
-    #   expect(arr.name).to be >= 2
-
-    # end
+  describe "#pick" do
 
   end
+
+  # describe "checks for input information" do
+
+  #   it "checks the minimum array length is 2" do
+
+  #      expect(stock_picker.pick([10])).to be >= 2
+
+  #   end
+
+  # end
 end   
