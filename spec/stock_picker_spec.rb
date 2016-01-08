@@ -7,11 +7,11 @@ describe "StockPicker" do
 
   describe "checks for input information" do
 
-    it "checks the minimum array length is 2" do
+    # it "checks the minimum array length is 2" do
 
-      expect(arr.name).to be >= 2
+    #   expect(arr.name).to be >= 2
 
-    end
+    # end
 
   end
 end   

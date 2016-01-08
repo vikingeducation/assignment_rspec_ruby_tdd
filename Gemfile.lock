@@ -1,8 +1,5 @@
 GEM
-<<<<<<< HEAD
   remote: https://rubygems.org/
-=======
->>>>>>> be5bfcb8cb55b7b4559148c8f4cb98f7b95220a6
   specs:
     coderay (1.1.0)
     diff-lcs (1.2.5)
@@ -59,16 +56,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-<<<<<<< HEAD
   guard
-=======
->>>>>>> be5bfcb8cb55b7b4559148c8f4cb98f7b95220a6
   guard-rspec
   rspec
 
 BUNDLED WITH
-<<<<<<< HEAD
    1.10.6
-=======
-   1.10.5
->>>>>>> be5bfcb8cb55b7b4559148c8f4cb98f7b95220a6
