@@ -4,8 +4,13 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+Dice	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/dice.rb	/^class Dice$/;"	c
 DiceThrower	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/dice_thrower.rb	/^class DiceThrower$/;"	c
-StockPicker	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/stock_picker.rb	/^class StockPicker$/;"	c
+Player	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/player.rb	/^class Player$/;"	c
 anagrams	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/tdd_warmups.rb	/^def anagrams(string)$/;"	f
+ask_for_number	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/player.rb	/^  def ask_for_number$/;"	f	class:Player
+initialize	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/dice_thrower.rb	/^  def initialize(player = nil)$/;"	f	class:DiceThrower
+initialize	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/player.rb	/^  def initialize(dice: Dice.new)$/;"	f	class:Player
 play	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/dice_thrower.rb	/^  def play$/;"	f	class:DiceThrower
+roll	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/player.rb	/^  def roll$/;"	f	class:Player
 stock_picker	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/tdd_warmups.rb	/^def stock_picker(array)$/;"	f

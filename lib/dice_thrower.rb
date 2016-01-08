@@ -1,9 +1,18 @@
+require 'player'
+require 'dice'
+
 class DiceThrower
 
+  def initialize(player = nil)
+    @player = Human.new(self)
+    @computer = Computer.new(self)
+  end
+
   def play
-    until game_over?
-      get_number_of_dice
-      computer_roll
+    loop do
+      player.roll
+      break if quit?
+      computer.roll
     end
   end
 

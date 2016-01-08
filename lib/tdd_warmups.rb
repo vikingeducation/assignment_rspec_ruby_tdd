@@ -1,19 +1,26 @@
 def stock_picker(array)
-  raise ArgumentError unless array.size >= 2
+  raise ArgumentError if array.size < 2
+
   buy_index = 0
   sell_index = 1
   max_profit = array[1] - array[0]
+  min_price = array[0]
+  min_index = 0
 
-  array.each_index do |earlier_index|
-    (earlier_index+1...array.length).each do |later_index|
-      potential_profit = array[later_index] - array[earlier_index]
+  array.each_with_index do |current_price, index|
+    next if index == 0
 
-      if potential_profit > max_profit
-        max_profit = potential_profit
-        buy_index = earlier_index
-        sell_index = later_index
-      end
+    potential_profit = current_price - min_price
 
+    if potential_profit > max_profit
+      max_profit = potential_profit
+      buy_index = min_index
+      sell_index = index
+    end
+
+    if current_price < min_price
+      min_price = current_price
+      min_index = index
     end
   end
 
