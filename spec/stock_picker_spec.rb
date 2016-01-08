@@ -36,6 +36,20 @@ describe "StockPicker" do
 
   end
 
+  describe "#results" do
+
+    it "checks that an array of length is returned" do
+        array = [100,40]
+        expect(stock_picker.pick(array).length).to eq([-1,-1])
+    end
+
+    it "first index is larger then second" do
+        array [44, 30, 24, 32, 35, 30, 40, 38, 15]
+        expect(stock_picker.pick(array).to eq([2,6])
+    end
+
+  end
+
   # describe "checks for input information" do
 
   #   it "checks the minimum array length is 2" do
