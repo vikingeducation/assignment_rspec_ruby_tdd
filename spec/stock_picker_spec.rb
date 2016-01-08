@@ -10,6 +10,11 @@ describe '#stock_picker' do
 	end
 
 	it 'will return an array' do
-		expect{stock_picker.class}.to eq([].class)
+		expect(stock_picker([1,2]).class).to eq([].class)
+	end
+
+	it 'selects day to buy the stock' do
+		expect(stock_picker([44, 30, 24, 32, 35, 30, 40, 38, 15]).first).to eq([24,60].first)
+
 	end
 end
