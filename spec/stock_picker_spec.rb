@@ -7,8 +7,16 @@ describe "StockPicker" do
 
   describe "#pick" do
 
-    it "checks the minimum array length is 2" do
+    it "checks that an array is passed" do
         expect{stock_picker.pick("10 20 30")}.to raise_error("Array not passed")
+    end
+
+    it "checks that an array elements are Numeric" do
+        expect{stock_picker.pick([10,20,"dhdh"])}.to raise_error("Array elements should be numeric and positive")
+    end
+
+    it "checks that an array elements are positive" do
+        expect{stock_picker.pick([10,20, -1])}.to raise_error("Array elements should be numeric and positive")
     end
 
     # it "checks the minimum array length is 2" do
