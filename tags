@@ -1,0 +1,28 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Computer	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/computer.rb	/^class Computer < Player$/;"	c
+Dice	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/dice.rb	/^class Dice$/;"	c
+DiceThrower	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/dice_thrower.rb	/^class DiceThrower$/;"	c
+Human	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/human.rb	/^class Human < Player$/;"	c
+Player	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/player.rb	/^class Player$/;"	c
+anagrams	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/tdd_warmups.rb	/^def anagrams(string)$/;"	f
+ask_for_number	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/human.rb	/^  def ask_for_number$/;"	f	class:Human
+ask_for_number	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/player.rb	/^  def ask_for_number$/;"	f	class:Player
+compare_rolls	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/dice_thrower.rb	/^  def compare_rolls$/;"	f	class:DiceThrower
+display_scores	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/dice_thrower.rb	/^  def display_scores$/;"	f	class:DiceThrower
+half_score!	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/player.rb	/^  def half_score!$/;"	f	class:Player
+initialize	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/dice_thrower.rb	/^  def initialize(human = nil, computer = nil)$/;"	f	class:DiceThrower
+initialize	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/player.rb	/^  def initialize(dice: Dice.new, game: nil)$/;"	f	class:Player
+play	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/dice_thrower.rb	/^  def play$/;"	f	class:DiceThrower
+quit!	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/dice_thrower.rb	/^  def quit!$/;"	f	class:DiceThrower
+quit?	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/dice_thrower.rb	/^  def quit?$/;"	f	class:DiceThrower
+roll	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/computer.rb	/^  def roll$/;"	f	class:Computer
+roll	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/dice.rb	/^  def roll(number_of_dice)$/;"	f	class:Dice
+roll	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/player.rb	/^  def roll$/;"	f	class:Player
+score!	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/player.rb	/^  def score!$/;"	f	class:Player
+stock_picker	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/tdd_warmups.rb	/^def stock_picker(array)$/;"	f
+welcome_message	/Users/kitlangton/Viking/Unit4/assignment_rspec_ruby_tdd/lib/dice_thrower.rb	/^  def welcome_message$/;"	f	class:DiceThrower
