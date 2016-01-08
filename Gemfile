@@ -2,9 +2,6 @@
 source "https://rubygems.org"
 
 
-  gem "guard"
 
-  gem "guard-rspec"
-
-  gem "rspec"
-
+gem 'rspec'
+gem 'guard-rspec'

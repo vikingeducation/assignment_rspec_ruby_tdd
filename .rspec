@@ -1,2 +1,6 @@
 --color
 --require spec_helper
+<<<<<<< HEAD
+=======
+--format d
+>>>>>>> be5bfcb8cb55b7b4559148c8f4cb98f7b95220a6
