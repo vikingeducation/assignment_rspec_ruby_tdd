@@ -27,4 +27,21 @@ describe Player do
       expect(player.score).to eq(1)
     end
   end
+
+  describe '#half_score!' do
+    it "should increase the score by 0.5" do
+      player.half_score!
+      expect(player.score).to eq(0.5)
+    end
+  end
+
+  describe '#last_roll' do
+    it 'returns the value of the last roll' do
+      allow(dice_double).to receive(:roll).and_return(5,3,8)
+      allow(player).to receive(:ask_for_number)
+      player.roll
+      player.roll
+      expect(player.last_roll).to eq 3
+    end
+  end
 end

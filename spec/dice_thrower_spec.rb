@@ -1,10 +1,12 @@
 require 'dice_thrower'
+require 'human'
+require 'computer'
+
 
 describe DiceThrower do
-
   let(:dice_thrower) { DiceThrower.new(human_double,computer_double) }
-  let(:human_double) { double("human") }
-  let(:computer_double) { double("computer") }
+  let(:human_double) { instance_double("Human") }
+  let(:computer_double) { instance_double("Computer") }
 
   describe '#play' do
     it 'asks the player for their number' do
@@ -29,6 +31,30 @@ describe DiceThrower do
     it "should return the number of the last player's selection" do
       dice_thrower.last_player_number = 5
       expect(dice_thrower.last_player_number).to eq(5)
+    end
+  end
+
+  describe '#compare_rolls' do
+    it 'adds to the players score if their roll is greater' do
+      expect(human_double).to receive(:score!)
+      allow(human_double).to receive(:last_roll).and_return(38)
+      allow(computer_double).to receive(:last_roll).and_return(18)
+      dice_thrower.compare_rolls
+    end
+
+    it 'adds to the computers score if their roll is greater' do
+      expect(computer_double).to receive(:score!)
+      allow(human_double).to receive(:last_roll).and_return(8)
+      allow(computer_double).to receive(:last_roll).and_return(18)
+      dice_thrower.compare_rolls
+    end
+
+    it 'adds half a point if there is a draw' do
+      expect(computer_double).to receive(:half_score!)
+      expect(human_double).to receive(:half_score!)
+      allow(human_double).to receive(:last_roll).and_return(8)
+      allow(computer_double).to receive(:last_roll).and_return(8)
+      dice_thrower.compare_rolls
     end
   end
 end
