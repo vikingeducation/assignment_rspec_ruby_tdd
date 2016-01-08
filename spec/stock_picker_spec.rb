@@ -8,4 +8,8 @@ describe '#stock_picker' do
 	it 'input array has to be all integers' do
 		expect{ stock_picker([1, "A", 2, "B"]) }.to raise_error
 	end
+
+	it 'will return an array' do
+		expect{stock_picker.class}.to eq([].class)
+	end
 end
