@@ -14,7 +14,7 @@ describe '#stock_picker' do
 	end
 
 	it 'selects day to buy the stock' do
-		expect(stock_picker([44, 30, 24, 32, 35, 30, 40, 38, 15]).first).to eq([24,60].first)
+		expect(stock_picker([44, 30, 24, 32, 35, 30, 40, 38, 15])).to eq([2,6].first)
 
 	end
 end
