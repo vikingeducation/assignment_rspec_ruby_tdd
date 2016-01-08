@@ -24,13 +24,13 @@ describe "StockPicker" do
     end  
   end
 
-  describe "#input" do
+  describe "#output" do
 
     it "checks that an array of length is returned" do
         expect(stock_picker.pick([10,20]).length).to eq(2)
     end
 
-    it "checks that an array of length is returned" do
+    it "first index is larger then second" do
         expect(stock_picker.pick([10,20])[1]).to  be > stock_picker.pick([10,20])[0]
     end
 
