@@ -1,7 +1,7 @@
 class StockPicker
 
   def pick(array)
-    array.length < 2
+    raise "Array not passed" if not array.is_a? Array
   end
 
 end
