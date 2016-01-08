@@ -24,6 +24,18 @@ describe "StockPicker" do
     end  
   end
 
+  describe "#input" do
+
+    it "checks that an array of length is returned" do
+        expect(stock_picker.pick([10,20]).length).to eq(2)
+    end
+
+    it "checks that an array of length is returned" do
+        expect(stock_picker.pick([10,20])[1]).to  be > stock_picker.pick([10,20])[0]
+    end
+
+  end
+
   # describe "checks for input information" do
 
   #   it "checks the minimum array length is 2" do
