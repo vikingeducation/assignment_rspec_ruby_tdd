@@ -1,19 +1,23 @@
-class Player
+require 'dice'
 
-  def initialize(dice: Dice.new)
+class Player
+  attr_reader :score
+
+  def initialize(dice: Dice.new, game: nil)
     @dice = dice
+    @game = game
+    @score = 0
   end
 
   def ask_for_number
-    input = gets.chomp
+    @game.last_player_number
+  end
 
-    return false if input == "quit"
-    return ask_for_number unless (1..6) === input.to_i
-
-    input.to_i
+  def score!
+    @score += 1
   end
 
   def roll
-    @dice.roll
+    @dice.roll(ask_for_number)
   end
 end

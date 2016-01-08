@@ -7,29 +7,24 @@ describe Player do
   let(:dice_double) { instance_double("Dice")}
   let(:player) { Player.new(dice: dice_double) }
 
-  describe '#ask_for_number' do
-    it 'returns a number from the player' do
-      allow(player).to receive(:gets).and_return('5')
-      expect(player.ask_for_number).to eq 5
+  describe '#initialize' do
+    it "initializes with score 0" do
+      expect(player.score).to eq 0
     end
-
-    it 'returns false if the player enters quit' do
-      allow(player).to receive(:gets).and_return('quit')
-      expect(player.ask_for_number).to eq false
-    end
-
-    it 'asks until the number is between 1 and 6' do
-      allow(player).to receive(:gets).and_return('0', '-4', '8', '6')
-      expect(player.ask_for_number).to eq 6
-    end
- end
+  end
 
   describe '#roll' do
-    it 'rolls dice' do
-      allow(dice_double).to receive(:roll)
-      expect(dice_double).to receive(:roll)
-
+    it "rolls the dice" do
+      allow(player).to receive(:ask_for_number).and_return 3
+      expect(dice_double).to receive(:roll).with 3
       player.roll
+    end
+  end
+
+  describe '#score!' do
+    it "should increase the score by 1" do
+      player.score!
+      expect(player.score).to eq(1)
     end
   end
 end
