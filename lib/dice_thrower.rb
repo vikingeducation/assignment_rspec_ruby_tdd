@@ -1,0 +1,3 @@
+class DiceThrower
+
+end
