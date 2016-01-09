@@ -48,14 +48,17 @@ describe "Anagrams" do
     describe "functionality" do
 
       it "returns an empty string for word with no anagrams" do
-        allow(file).to receive(:readlines).and_return("zygote")
+        file = double("File", :readlines => ["zygote"])
+        # allow(file).to receive(:readlines).and_return("zygote")
 
         expect(anagram.ana("zygote", file)).to eq([])
 
       end
 
       it "returns the anagrams from a word with anagrams as an array" do
-        allow(file).to receive(:readlines).and_return("PEARS")
+
+        file = double("File", :readlines => ["APERS","APRES","ASPER","PARES","PARSE","PRASE","PRESA","RAPES","REAPS","SPARE","B", "SPR", "SPEA","SPEAR", "ZYGOTE"])
+        # allow(file).to receive(:readlines).and_return("PEARS")
 
         expect(anagram.ana("PEARS", file)).to eq(["APERS","APRES","ASPER","PARES","PARSE","PRASE","PRESA","RAPES","REAPS","SPARE","SPEAR"])
 
