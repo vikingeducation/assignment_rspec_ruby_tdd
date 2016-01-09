@@ -1,5 +1,4 @@
 require 'anagram'
-require_relative '../lib/enable.txt'
 
 describe "Anagrams" do 
   let(:anagram){ Anagram.new }
