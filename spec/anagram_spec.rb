@@ -28,7 +28,7 @@ describe "Anagrams" do
 
     describe "dictionary" do
 
-      it "checks that dictionary is not empty"
+      it "checks that dictionary is not empty" do
 
         file = File.open("enable.txt", "r")
         dictionary = file.readlines
