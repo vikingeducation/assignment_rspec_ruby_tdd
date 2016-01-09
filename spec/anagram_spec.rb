@@ -1,4 +1,5 @@
-require 'anagrams'
+require 'anagram'
+require_relative '../lib/enable.txt'
 
 describe "Anagrams" do 
   let(:anagram){ Anagrams.new }
@@ -20,7 +21,21 @@ describe "Anagrams" do
 
       end
 
+
       it "if no anagram is found, return empty array"
+
+    end
+
+    describe "dictionary" do
+
+      it "checks that dictionary is not empty"
+
+        file = File.open("enable.txt", "r")
+        dictionary = file.readlines
+
+        expect{dictionary}.to_not eq()        
+
+      end
 
     end
 
