@@ -47,9 +47,9 @@ describe "Anagrams" do
     describe "functionality" do
 
       it "returns an empty string for word with no anagrams" do
-        allow(file).to receive(:open).and_return("zygote")
+        allow(file).to receive(:readlines).and_return("zygote")
 
-        expect(anagram.ana("zygote")).to eq([])
+        expect(anagram.ana("zygote", file)).to eq([])
 
       end
 
