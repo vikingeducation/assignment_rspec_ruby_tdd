@@ -2,10 +2,16 @@ require 'anagram'
 
 describe "Anagrams" do 
   let(:anagram){ Anagram.new }
-  let(:file){ File.new }
+  # let(:file){ File.new }
 
 
   describe "#anag" do
+
+    before "create file double" do
+
+      file = double("File", :readlines => "zygote")
+
+    end
 
     describe "input" do
 
