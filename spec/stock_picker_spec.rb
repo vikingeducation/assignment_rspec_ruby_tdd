@@ -2,11 +2,11 @@ require 'stock_picker'
 
 describe '#stock_picker' do
 	it 'raises an error if no array passed as parameter' do
-		expect{ stock_picker }.to raise_error
+		expect{ stock_picker(nil) }.to raise_error(ArgumentError, "Invalid argument")
 	end
 
 	it 'input array has to be all integers' do
-		expect{ stock_picker([1, "A", 2, "B"]) }.to raise_error
+		expect{ stock_picker([1, "A", 2, "B"]) }.to raise_error(ArgumentError, "Invalid input")
 	end
 
 	it 'will return an array' do
