@@ -1,0 +1,1 @@
+require 'dice_thrower'
