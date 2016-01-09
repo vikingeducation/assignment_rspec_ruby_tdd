@@ -10,8 +10,8 @@ describe "Anagrams" do
     describe "input" do
 
       it "checks that a string is passed" do
-          expect{anagram.ana(1)}.to raise_error("String not passed")
-          expect{anagram.ana([1,2])}.to raise_error("String not passed")
+          expect{anagram.ana(1), file}.to raise_error("String not passed")
+          expect{anagram.ana([1,2], file)}.to raise_error("String not passed")
       end
     end
 
@@ -54,8 +54,9 @@ describe "Anagrams" do
       end
 
       it "returns the anagrams from a word with anagrams as an array" do
+        allow(file).to receive(:readlines).and_return("PEARS")
 
-        expect(anagram.ana("pears")).to eq(["APERS","APRES","ASPER","PARES","PARSE","PRASE","PRESA","RAPES","REAPS","SPARE","SPEAR"])
+        expect(anagram.ana("PEARS", file)).to eq(["APERS","APRES","ASPER","PARES","PARSE","PRASE","PRESA","RAPES","REAPS","SPARE","SPEAR"])
 
       end
     
