@@ -22,6 +22,8 @@ describe "Anagrams" do
       end
 
 
+
+
       it "if no anagram is found, return empty array" do
 
       end
@@ -44,6 +46,7 @@ describe "Anagrams" do
     describe "functionality" do
 
       it "returns an empty string for word with no anagrams" do
+        allow(anagram).to receive(:open).and_return("zygote")
 
         expect(anagram.ana("zygote")).to eq([])
 
