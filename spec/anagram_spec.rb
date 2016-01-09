@@ -2,7 +2,7 @@ require 'anagram'
 require_relative '../lib/enable.txt'
 
 describe "Anagrams" do 
-  let(:anagram){ Anagrams.new }
+  let(:anagram){ Anagram.new }
 
 
   describe "#anag" do
@@ -26,18 +26,35 @@ describe "Anagrams" do
 
     end
 
-    describe "dictionary" do
+    # describe "dictionary" do
 
-      it "checks that dictionary is not empty" do
+    #   it "checks that dictionary is not empty" do
 
-        file = File.open("enable.txt", "r")
-        dictionary = file.readlines
+    #     file = File.open("enable.txt", "r")
+    #     dictionary = file.readlines
 
-        expect{dictionary}.to_not eq()        
+    #     expect{dictionary}.to_not eq()        
+
+    #   end
+
+    # end
+
+    describe "functionality" do
+
+      it "returns an empty string for word with no anagrams" do
+
+        expect(anagram.ana("zygote")).to eq([])
 
       end
 
+      it "returns the anagrams from a word with anagrams as an array" do
+
+        expect(anagram.ana("pears")).to eq(["APERS","APRES","ASPER","PARES","PARSE","PRASE","PRESA","RAPES","REAPS","SPARE","SPEAR"])
+
+      end
+    
     end
+
 
   end
 
