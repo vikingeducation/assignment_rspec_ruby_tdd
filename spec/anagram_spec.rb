@@ -7,15 +7,14 @@ describe "Anagrams" do
 
   describe "#anag" do
 
-    before "create file double" do
 
-      file = double("File", :readlines => "zygote")
-
-    end
 
     describe "input" do
 
       it "checks that a string is passed" do
+        
+          file = double("File", :readlines => "zygote")
+
           expect{anagram.ana(1, file)}.to raise_error("String not passed")
           expect{anagram.ana([1,2], file)}.to raise_error("String not passed")
       end
