@@ -23,4 +23,11 @@ describe "Game" do
         expect(game2.dice).to eq(3)
     end 
   end
+
+  describe "roll dice" do
+    it "roll dice correctly picks a number between 1 and 6" do
+        expect(1..6).to cover(dice.roll_dice)
+    end 
+
+  end
 end   
