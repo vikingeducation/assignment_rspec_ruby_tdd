@@ -8,11 +8,10 @@ describe "Anagrams" do
   describe "#anag" do
 
 
-
     describe "input" do
 
       it "checks that a string is passed" do
-        
+
           file = double("File", :readlines => "zygote")
 
           expect{anagram.ana(1, file)}.to raise_error("String not passed")
@@ -24,14 +23,18 @@ describe "Anagrams" do
 
       it "outputs an array" do
 
-        allow(file).to receive(:readlines).and_return("PEARS")
+        file = double("File", :readlines => "zygote")
 
-        expect(anagram.ana("PEARS", file)).to eq(["APERS","APRES","ASPER","PARES","PARSE","PRASE","PRESA","RAPES","REAPS","SPARE","SPEAR"])
+        allow(file).to receive(:readlines).and_return("zygote")
+
+        expect(anagram.ana("ZYGOTE", file)).to eq([])
 
       end
 
 
       it "if no anagram is found, return empty array" do
+
+        file = double("File", :readlines => "zygote")
 
         allow(file).to receive(:readlines).and_return("zygote")
 
