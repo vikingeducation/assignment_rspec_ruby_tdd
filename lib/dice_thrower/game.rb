@@ -1,9 +1,10 @@
 require_relative 'player'
 require_relative 'human'
-require_relative 'computer'
 
 
 class Game 
+
+  attr_reader :player1, :player2
 
   def initialize
     @player1 = Human.new
@@ -16,14 +17,15 @@ class Game
     print_instructions
     num_rolls = @player1.user_input
 
-    @player1.dice, @player2.dice = num_rolls
-
     # human's moves
-    player_rolls_dice(@player1.dice, @player1)
+    puts "Here are your dice:"
+    player_rolls_dice(num_rolls, @player1)
 
     # computer's moves
+    puts "Here are the computer's dice:"
+    player_rolls_dice(num_rolls, @player2)
 
-
+    decide_winner(@player1.score, @player2.score)
 
   end
 
@@ -40,10 +42,26 @@ class Game
   def player_rolls_dice(num_rolls, player)
     num_rolls.times do |single_roll|
       single_score = player.random_die
-      puts "Roll #{single_roll}: #{single_score}"
+      puts "Roll #{single_roll+1}: #{single_score}"
       player.score += single_score
     end
   end
+
+  
+  def decide_winner(player1_score, player2_score)
+    puts "Your score: #{player1_score}"
+    puts "Computer's score: #{player2_score}"
+    if player1_score > player2_score
+      puts "Congratulations, you win!"
+      player1_score
+    elsif player1_score == player2_score
+      puts "It's a tie!"
+    else
+      puts "The computer won, sorry."
+      player2_score
+    end
+  end
+
 
 
 end

@@ -2,7 +2,7 @@ class Player
 
   attr_accessor :dice, :score
 
-  def initialize(dice=nil)
+  def initialize
     @dice = dice
     @score = 0
   end
@@ -11,11 +11,8 @@ class Player
     @dice = dice
   end
 
-
   def random_die
     roll = rand(1..6)
-    puts "#{roll}"
-    return roll
   end
 
 

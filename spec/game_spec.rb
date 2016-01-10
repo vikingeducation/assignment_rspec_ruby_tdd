@@ -6,18 +6,32 @@ describe Game do
   let (:player) { Player.new }
   let (:human) { Human.new }
 
+  before do 
+    allow(human).to receive(:gets).and_return("6")
+  end
+
+  describe '#initialize' do
+    it "creates player1 as human, player2 as player" do
+      expect(game.player1).to be_an_instance_of(Human)
+      expect(game.player2).to be_an_instance_of(Player)
+    end
+
+
+  end
+
 
   describe "#play" do
 
     it "calls prints_instructions" do
-      allow(game).to receive(:gets).and_return("2")
+      # allow(human).to receive(:gets).and_return("2")
       expect(game).to receive(:print_instructions)
       game.play
     end
 
-    it "calls user_input" do
-      allow(human).to receive(:gets).and_return("2")
-      expect(human).to receive(:user_input)
+    it "calls player_rolls_dice for both human and computer" do
+      # allow(human).to receive(:gets).and_return("3")
+      expect(game).to receive(:player_rolls_dice)
+      expect(game).to receive(:player_rolls_dice)
       game.play
     end
 
@@ -40,6 +54,24 @@ describe Game do
   end
 
 
+  describe "#decide_winner" do
+
+    let(:score1) { 20 }
+    let(:score2) { 10 }
+
+    it "picks player1 if their score is higher than player2" do
+      expect(game.decide_winner(score1, score2)).to eq(20)
+    end
+
+    it "picks player2 if their score is higher than player1" do
+      expect(game.decide_winner(score2, score1)).to eq(20)
+    end
+
+    it "doesn't pick a winner if it's a tie" do
+      expect(game.decide_winner(score1, score1)).to be nil
+    end
+
+  end
 
 
 
