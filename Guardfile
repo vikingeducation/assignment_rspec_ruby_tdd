@@ -24,9 +24,18 @@
 #  * zeus: 'zeus rspec' (requires the server to be started separately)
 #  * 'just' rspec: 'rspec'
 
-guard :rspec, cmd: "bundle exec rspec" do
+
+guard :rspec, cmd: 'bundle exec rspec' do
+  #watch(//) { "spec" }
+  watch(%r{^spec/.+_spec\.rb$})
+  watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
+  watch('spec/spec_helper.rb')  { "spec" }
   require "guard/rspec/dsl"
   dsl = Guard::RSpec::Dsl.new(self)
+
+# guard :rspec, cmd: "bundle exec rspec" do
+#  require "guard/rspec/dsl"
+#  dsl = Guard::RSpec::Dsl.new(self)
 
   # Feel free to open issues for suggestions and improvements
 
