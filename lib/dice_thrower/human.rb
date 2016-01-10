@@ -4,9 +4,13 @@ require_relative 'player'
 class Human < Player
 
 
-  def ask_for_number
-    puts "How many dice would you like to roll?"
-    answer = gets.chomp.to_i
+  def user_input
+    input = ""
+    until (1..10).include? input
+      puts "Please enter a number between 1 and 10."
+      input = gets.chomp.to_i
+    end
+    input
   end
 
 
