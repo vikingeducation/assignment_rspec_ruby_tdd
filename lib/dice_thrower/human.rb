@@ -7,7 +7,7 @@ class Human < Player
     input = ""
     until (1..10).include? input
       puts "Please enter a number between 1 and 10."
-      input = "6".to_i
+      input = gets.chomp.to_i
     end
     input
   end

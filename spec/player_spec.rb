@@ -12,10 +12,6 @@ describe Player do
       expect(player.dice.nil?).to be true
     end
 
-    it "can create a new player with 6 dice" do
-      expect(player_with_6_dice.dice).to eq(6)
-    end
-
   end
 
 

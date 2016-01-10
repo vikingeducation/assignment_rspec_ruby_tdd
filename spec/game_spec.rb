@@ -7,8 +7,9 @@ describe Game do
   let (:human) { Human.new }
 
   before do 
-    allow(human).to receive(:gets).and_return("6")
+    allow(human).to receive(:user_input).and_return(5)
   end
+
 
   describe '#initialize' do
     it "creates player1 as human, player2 as player" do
@@ -16,20 +17,17 @@ describe Game do
       expect(game.player2).to be_an_instance_of(Player)
     end
 
-
   end
 
 
   describe "#play" do
 
     it "calls prints_instructions" do
-      # allow(human).to receive(:gets).and_return("2")
       expect(game).to receive(:print_instructions)
       game.play
     end
 
     it "calls player_rolls_dice for both human and computer" do
-      # allow(human).to receive(:gets).and_return("3")
       expect(game).to receive(:player_rolls_dice)
       expect(game).to receive(:player_rolls_dice)
       game.play
