@@ -41,17 +41,3 @@ describe StockPicker do
 
 
 end
-
-
-# # dictionary notes - assume that it takes two arguments
-
-# # option 1: 
-#   allow(File).to receive(:readlines).and_return(dictionary)
-# # option 2:
-#   let(:my_file_double) { double("File") }
-
-#   before do
-#       allow(File).to receive(:open).and_return(my_file_double)
-#       allow(my_file_double).to receive(:readlines).and_return(["a", "b", "c"])
-#       allow(my_file_double).to receive(:close)
-#   end
