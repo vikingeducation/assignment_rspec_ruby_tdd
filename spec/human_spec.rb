@@ -7,18 +7,15 @@ describe Human do
 
   describe '#set_dice' do
     it 'raises TypeError if player doesn\'t input a number' do
-      allow(human).to receive(:gets).and_return('e')
-      expect{human.set_dice}.to raise_error(TypeError)
+      expect{human.set_dice("a")}.to raise_error(ArgumentError)
     end
 
     it 'raises ArgumentError unless player inputs positive number' do
-      allow(human).to receive(:gets).and_return('0')
-      expect{human.set_dice}.to raise_error(ArgumentError)
+      expect{human.set_dice(0)}.to raise_error(ArgumentError)
     end
 
     it 'properly sets dice constant' do
-      allow(human).to receive(:gets).and_return('2')
-      human.set_dice
+      human.set_dice(2)
       expect(human.dice).to eq(2)
     end
   end
