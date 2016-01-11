@@ -1,6 +1,7 @@
 require 'dice'
 
 describe Dice do
+
   it 'is a dice' do
     expect(subject).to be_a(Dice)
   end
@@ -44,4 +45,5 @@ describe Dice do
       Dice.roll_multiple(N)
     end
   end
+  
 end
