@@ -1,8 +1,16 @@
 class Game
 
-  # intialize game
-    # new human player
-    # new computer player
+  attr_reader :human, :computer
+
+  def initialize
+    @human = Human.new
+    @computer = Computer.new
+  end
+
+  def start
+    puts "Welcome to Dice Thrower\nInstructions:\nEnter how many dice you'd like to throw\nIf your total is higher than the computer, you win!\nEnter 'q' to quit."
+    render
+  end
 
   # #start method
     # game instructions
@@ -15,7 +23,9 @@ class Game
       # increment scores
       # render scores
 
-  # def render_score
+  def render
+    puts "***** SCORE *****\nYou: #{human.score} wins\nComputer: #{computer.score} wins\n*****************"
+  end
 
   # generate random dice rolls
     # pass rolls to increment scores
@@ -25,10 +35,17 @@ class Game
 
 end
 
-class Human
+class Player
 
-  # initialize
-    # score
+  attr_reader :score
+
+  def initialize
+    @score = 0
+  end
+
+end
+
+class Human < Player
 
   # def get_input
     # unless valid_input?
@@ -36,10 +53,7 @@ class Human
 
 end
 
-class Computer
-
-  # initilaize
-    # score
+class Computer < Player
 
   # computer_input
 
