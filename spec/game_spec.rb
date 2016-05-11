@@ -2,6 +2,8 @@ require_relative '../lib/game'
 
 describe Game do
 
+  subject { Game.new }
+
   context "New Game" do
     it "creates a new game" do
       expect(subject).to be_a(Game)
@@ -17,7 +19,7 @@ describe Game do
       expect{subject.start}.to output(/[Weclome]/).to_stdout
     end
 
-    it "calls the #render method" do
+    it "calls the #render  method" do
       expect(subject).to receive(:render)
       subject.start
     end
@@ -31,12 +33,11 @@ describe Game do
     end
   end
 
-  context "Game Loop" do
-
-  end
 end
 
 describe Human do
+
+  subject { Human.new }
 
   context "Human Player" do
     it "creates a human player" do
@@ -45,8 +46,15 @@ describe Human do
   end
 
   context "Get Input" do
+
     it "accepts a positive integer" do
-      expect{subject.get_input}.not_to raise_error
+      allow(subject).to receive(:gets).and_return("1")
+      expect(subject.get_input).to eq(1)
+    end
+
+    it "raises error for invalid input" do
+      allow(subject).to receive(:gets).and_return("jello")
+      expect{subject.get_input}.to raise_error("Invalid Input")
     end
   end
 end
