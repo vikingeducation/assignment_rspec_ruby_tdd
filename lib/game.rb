@@ -1,6 +1,6 @@
 class Game
 
-  attr_reader :human, :computer
+  attr_reader :computer, :human
 
   def initialize
     @human = Human.new
@@ -8,60 +8,65 @@ class Game
   end
 
   def start
-    puts "Welcome to Dice Thrower\n\nInstructions:\nEnter how many dice you'd like to throw\nIf your total is higher than the computer, you win!\nEnter 'q' to quit.\n\n"
-    render
-    loop do
-      break if human.get_input == 'q'
-      if check_input(human.get_input)
-        # TODO: complete this
-      end
+  	puts "Roll dice and beat the computer! 'q' to quit the game."
+  	render
+  	loop do
+  	  input = @human.get_input
+  	  if input == 'q'
+  	  	break
+  	  else
+  	  	check_input(input)
+  	  	render
+  	  end
     end
-    puts "You quit the game!\n\n"
+    puts "You have quit the game!"
     render
   end
-
-  # #start method
-    # game instructions
-    # render scores
-    # start loop
-      # get human input
-        # if 'q' then break loop
-        # else human validate input
-      # generate dice rolls
-      # increment scores
-      # render scores
 
   def render
-    puts "***** SCORE *****\nYou: #{human.score} wins\nComputer: #{computer.score} wins\n*****************\n\n"
+  	puts "***************"
+  	puts "Your Wins: #{@human.score}"
+  	puts "Computer Wins: #{@computer.score}"
+  	puts "***************"
   end
 
-  def check_input
-    # TODO: complete this
+  def check_input(input)
+  	num_dice = input.to_i
+  	if num_dice < 1
+  	  puts "Invalid Input"
+  	  check_input(@human.get_input)
+  	else
+  	  generate_play(num_dice)
+  	end
   end
 
-  def check_winner(number_of_dice)
-    if @human.dice_roll(number_of_dice) > @computer.dice_roll(number_of_dice)
-      @human.score += 1
-    elsif @human.dice_roll(number_of_dice) < @computer.dice_roll(number_of_dice)
-      @computer.score += 1
-    end
+  def generate_play(num_dice)
+  	@computer.current, @human.current = 0, 0
+  	num_dice.times do
+  	  @computer.current += rand(1..6)
+  	  @human.current += rand(1..6)
+  	end
+  	check_winner(@computer.current, @human.current)
   end
+
+  def check_winner(computer, human)
+  	if computer > human
+  	  @computer.score += 1
+  	else
+  	  @human.score += 1
+  	end
+  end
+
 
 end
 
 class Player
-  attr_reader :score
+
+  attr_accessor :score, :current
 
   def initialize
-    @score = 0
-  end
-
-  def dice_roll(number_of_dice)
-    points = 0
-    number_of_dice.times do
-      points += rand(1..6)
-    end
-    return points
+  	@score = 0
+  	@current = 0
   end
 
 end
@@ -71,10 +76,11 @@ class Human < Player
   def get_input
     puts "Enter number of dice to throw >"
     input = gets.chomp
-    input
+    return input
   end
 
 end
 
 class Computer < Player
+
 end
