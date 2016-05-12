@@ -2,34 +2,33 @@ require_relative '../lib/game'
 
 describe Game do
 
-  subject { Game.new }
+  let(:game) { Game.new }
+  let(:human) { Human.new }
+  let(:computer)   { Computer.new }
 
   context "New Game" do
     it "creates a new game" do
-      expect(subject).to be_a(Game)
+      expect(game).to be_a(Game)
     end
+
+    it "creates a human player" do
+  	  expect(game.human).to be_a(Human)
+  	end
+
+  	it "creates a computer player" do
+  	  expect(game.computer).to be_a(Computer)
+  	end
   end
 
-  context "Before Game Loop" do
-
-    let(:fake_human) { Human.new }
-    let(:fake_computer) { Computer.new }
-
-    it "prints instructions at start of new game" do
-      expect{subject.start}.to output(/[Weclome]/).to_stdout
+  context "Game Methods" do
+    it "#generate_play calls #check_winner" do
+      expect(game).to receive(:check_winner)
+      game.generate_play(9)
     end
 
-    it "calls the #render  method" do
-      expect(subject).to receive(:render)
-      subject.start
-    end
-
-    it "sets human score as 0" do
-      expect(fake_human.score).to eq(0)
-    end
-
-    it "sets computer score as 0" do
-      expect(fake_computer.score).to eq(0)
+    it "#check_input calls #generate_play" do
+      expect(game).to receive(:generate_play).with(10)
+      game.check_input("10")
     end
   end
 
@@ -37,32 +36,38 @@ end
 
 describe Human do
 
-  subject { Human.new }
+  let(:human) { Human.new }
+  let(:game) { Game.new }
 
-  context "Human Player" do
-    it "creates a human player" do
-      expect(subject).to be_a(Human)
+  context "New Human Player" do
+    it "has 0 current points" do
+      expect(human.current).to eq(0)
     end
+
+    it "has 0 total points" do
+      expect(human.score).to eq(0)
+    end
+
+    it "accepts human input with #get_input" do
+      expect(human).to receive(:gets).and_return("2")
+      human.get_input
+    end
+
   end
 
-  context "Get Input" do
-
-    it "accepts a positive integer" do
-      allow(subject).to receive(:gets).and_return("1")
-      expect(subject.get_input).to eq(1)
-    end
-
-    it "raises error for invalid input" do
-      allow(subject).to receive(:gets).and_return("jello")
-      expect{subject.get_input}.to raise_error("Invalid Input")
-    end
-  end
 end
 
 describe Computer do
-  context "Computer Player" do
-    it "creates a computer player" do
-      expect(subject).to be_a(Computer)
+
+  let(:computer) { Computer.new }
+
+  context "New Computer Player" do
+    it "has 0 current points" do
+      expect(computer.current).to eq(0)
+    end
+
+    it "has 0 total points" do
+      expect(computer.score).to eq(0)
     end
   end
 end
