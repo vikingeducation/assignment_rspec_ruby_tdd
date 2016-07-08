@@ -1,11 +1,21 @@
 require_relative 'player'
-require_relative 'computer'
 require_relative 'board'
+
+
+#METHODS
+#	Roll
+#	Check_Dice_Total
+#	Assign_Winner
+#	Increment_score
+#	Increment_round
+
 
 
 class Game
 
-	attr_reader :current_player
+# init should create the player, computer and board
+
+	attr_reader :current_player, :player
 
 	def initialize
 
@@ -17,6 +27,10 @@ class Game
 
 
 	end
+
+
+
+
 
 
 end

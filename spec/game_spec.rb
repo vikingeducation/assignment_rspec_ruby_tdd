@@ -7,21 +7,7 @@ describe '.Game' do
 	# initialize player and computer
 	let( :game ) { Game.new }
 
-	describe '#initialize' do
 
-		it 'should create a player' do
-
-			expect( @player ).to be_an_instance_of( game )
-
-		end
-
-	end
-
-
-
-	it 'should create a computer'
-	it 'should assign the current player'
-	it 'should create a board'
 	# rolls the dice
 	it 'should return a random number on 1 die (6 sides)'
 	# assigns total

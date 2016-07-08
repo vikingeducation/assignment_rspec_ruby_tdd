@@ -1,5 +1,4 @@
 require_relative 'game'
-require_relative 'computer'
 require_relative 'board'
 
 class Player
@@ -13,10 +12,34 @@ class Player
 	end
 
 
-	def dice_prompt
 
-		@board.message("Please enter the number of dice")
+	def get_num_dice
+
+		num_dice = 0
+
+		loop do
+
+   		@board.message("Please enter the number of dice")
+
+	  	num_dice = gets.strip.to_i
+
+	 		break unless num_dice < 1
+
+	  end
+
+	  return num_dice
 
 	end
+
+
+
+end
+
+
+
+class Computer < Player
+
+
+
 
 end
