@@ -2,12 +2,14 @@ require 'pry'
 
 class Player
 
+	QUIT_CMDS = [ "q", "quit", "exit" ]
+
 	attr_reader :name, :board, :num_dice
 
 	def initialize( name = "Joe" )
 
 		@name = name
-		@num_dice = 0
+		$num_dice = 0
 
 	end
 
@@ -17,11 +19,10 @@ class Player
 
 		loop do
 
-	  	@num_dice = ask_for_dice
+	  	$num_dice = ask_for_dice
 
-	  	if valid_input?( @num_dice )
-	  		roll
-	  		break
+	  	if valid_input?( $num_dice )
+	  		return roll
 	  	end
 
 	  end
@@ -29,11 +30,17 @@ class Player
 	end
 
 
+	def exit?( cmd )
+
+		exit if QUIT_CMDS.include?( cmd )
+
+	end
+
 	def roll
 
 		total = 0
 
-		@num_dice.times do
+		$num_dice.times do
 
 			total += rand( 1..6 )
 
@@ -50,7 +57,10 @@ class Player
 
 		puts %q(Please enter the number of dice to play with:)
 
-		return gets.strip.to_i
+		num = gets.strip
+		exit?( num )
+
+		return num.to_i
 
 
 	end

@@ -14,7 +14,8 @@ class Game
 		@computer = Computer.new( "Computer" )
 		@board = Board.new
 		@player = Player.new( "Joe" )
-		@turn = 0
+		@player_score = 0
+		@cpu_score = 0
 
 		@current_player = @player
 
@@ -25,17 +26,22 @@ class Game
 
 	def play
 
+		loop do
+
 			total1 =	@current_player.get_num_dice
 
 			change_players
 
 			total2 = @current_player.get_num_dice
 
-			increment_turn
+			change_players
 
-			@board.render( total1, total2, @turn )
+			check_result( total1, total2 )
 
+			@board.render( total1, total2 )
+			@board.display_outcome( @player_score, @cpu_score )
 
+		end
 
 
 	end
@@ -47,9 +53,17 @@ class Game
 
 	end
 
-	def increment_turn
 
-		 @turn += 1
+
+	def check_result( p1, cpu )
+
+		if p1 == cpu
+			return
+		elsif p1 > cpu
+			@player_score += 1
+		else
+			@cpu_score += 1
+		end
 
 	end
 

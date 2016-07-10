@@ -12,20 +12,21 @@ class Board
 	end
 
 
-	def render( total1, total2, round )
+	def render( p_score, cpu_score )
 
-		puts "#{total1}  #{total2}  #{round}"
+		puts "Player had #{p_score} and CPU had #{cpu_score}"
 
 	end
 
 
-	def display( message )
+	def display_outcome( total1, total2 )
 
-		puts ""
+		puts "**********************"
 
-		puts message
+		puts "Your Score: #{total1}"
+		puts "CPU Score : #{total2}"
 
-		puts ""
+		puts "**********************"
 
 	end
 
