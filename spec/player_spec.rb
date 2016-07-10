@@ -54,9 +54,33 @@ describe '.Player' do
 
 	describe '#valid_input?' do
 
+		it 'should return true if passed 1 or higher' do
+
+			expect( player.valid_input?( 6 ) ).to be true
+
+		end
+
+		it 'should return false if passed 0' do
+
+			expect( player.valid_input?( 0 )).to be false
+
+		end
 
 
 	end #/. valid input
+
+
+	describe '#roll' do
+
+		it 'should return a num between 1 and 6 with 1 die' do
+
+			$num_dice = 1
+
+			expect( player.roll ).to be > 1
+
+		end
+
+	end
 
 
 end #/.Player

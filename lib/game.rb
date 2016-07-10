@@ -7,7 +7,7 @@ class Game
 
 	$num_dice = 0
 
-	attr_reader :current_player, :player
+	attr_reader :current_player
 
 	def initialize
 

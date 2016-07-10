@@ -4,9 +4,6 @@ class Player
 
 	QUIT_CMDS = [ "q", "quit", "exit" ]
 
-	attr_reader :name, :board, :num_dice
-
-
 	def get_num_dice
 
 		loop do
