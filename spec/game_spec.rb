@@ -1,6 +1,7 @@
 require 'spec_helper'
 require 'board'
 require 'player'
+require 'game'
 
 describe '.Game' do
 # game
@@ -8,8 +9,6 @@ describe '.Game' do
 	let( :game ) { Game.new }
 
 
-	# rolls the dice
-	it 'should return a random number on 1 die (6 sides)'
 	# assigns total
 	it 'should assign the sum to the current player'
 	# checks win

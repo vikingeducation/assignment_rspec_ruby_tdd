@@ -3,7 +3,7 @@ require 'board'
 require 'player'
 require 'game'
 
-
+=begin
 describe '.Player' do
 
 	let( :player ){ Player.new }
@@ -27,36 +27,24 @@ describe '.Player' do
 
 		it 'should get the number of dice from the player' do
 
-			allow( player ).to receive(:gets).and_return( "5" )
-			allow( @board ).to receive( :message ).and_return( true )
 
-			expect( player.get_num_dice).to eq( 5 )
+
 
 		end
 
-
-			let(:player_double){"Player"}
-
-
-		# gets errors for invalid input
-		it 'should loop through request for input until valid' do
+	end
 
 
-			allow( player_double ).to receive( :gets ).and_return( "0", "k", "-1")
-			allow( @board ).to receive( :message ).and_return( true )
+		it 'should loop through request for input until valid'
 
 
-			allow( player ).to receive(:gets) do
+	describe '#valid_input' do
 
-				@counter ||= 0
-				@counter += 1
-				"1"
-			end
+		it 'should return false if bad input' do
 
+			expect( player.valid_input?( 0 ) ).to be false
 
-			player.get_num_dice
-			expect( @counter ).to eq( 3 )
-
+			player.valid_input?( 0 )
 
 		end
 
@@ -64,8 +52,14 @@ describe '.Player' do
 	end
 
 
+
+
+
+
 	# quits game
 	it 'should quit the game if the player enters the CMD'
 
 
 end
+
+=end

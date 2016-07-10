@@ -1,5 +1,4 @@
-require_relative 'game'
-require_relative 'player'
+
 
 
 class Board
@@ -13,8 +12,9 @@ class Board
 	end
 
 
-	def render
+	def render( total1, total2, round )
 
+		puts "#{total1}  #{total2}  #{round}"
 
 	end
 

@@ -1,13 +1,12 @@
-require_relative 'game'
-require_relative 'player'
-require_relative 'board'
 
 
 class Computer < Player
 
+	def get_num_dice
 
+		roll
 
-
+	end
 
 
 end

@@ -1,27 +1,20 @@
-require_relative 'player'
-require_relative 'board'
-
-
-#METHODS
-#	Roll
-#	Check_Dice_Total
-#	Assign_Winner
-#	Increment_score
-#	Increment_round
-
+require_relative './player.rb'
+require_relative './board.rb'
+require_relative './dice.rb'
+require_relative './computer.rb'
 
 
 class Game
 
-# init should create the player, computer and board
 
 	attr_reader :current_player, :player
 
 	def initialize
 
-		@player = Player.new( "Joe" )
 		@computer = Computer.new( "Computer" )
 		@board = Board.new
+		@player = Player.new( "Joe" )
+		@turn = 0
 
 		@current_player = @player
 
@@ -30,7 +23,39 @@ class Game
 
 
 
+	def play
 
+			total1 =	@current_player.get_num_dice
+
+			change_players
+
+			total2 = @current_player.get_num_dice
+
+			increment_turn
+
+			@board.render( total1, total2, @turn )
+
+
+
+
+	end
+
+
+	def change_players
+
+		@current_player == @player ? @current_player = @computer : @current_player = @player
+
+	end
+
+	def increment_turn
+
+		 @turn += 1
+
+	end
 
 
 end
+
+
+dice = Game.new
+dice.play
