@@ -5,10 +5,6 @@ require_relative './computer.rb'
 
 class Game
 
-	$num_dice = 0
-
-	attr_reader :current_player
-
 	def initialize
 
 		@computer = Computer.new

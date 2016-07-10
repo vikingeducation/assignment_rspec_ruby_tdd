@@ -3,6 +3,7 @@ require 'pry'
 class Player
 
 	QUIT_CMDS = [ "q", "quit", "exit" ]
+	$num_dice = 0
 
 	def get_num_dice
 
