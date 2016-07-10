@@ -3,63 +3,61 @@ require 'board'
 require 'player'
 require 'game'
 
-=begin
 describe '.Player' do
 
 	let( :player ){ Player.new }
 
-# player
-	describe '#initialize' do
-
-
-		it 'player should be a player' do
-
-			expect( player ).to be_a( Player )
-
-
-		end
-
-	end
-	# selects dice to throw
-
-
 	describe '#get_num_dice' do
 
-		it 'should get the number of dice from the player' do
+		it 'should return roll when called with correct num' do
 
+			allow( player ).to receive( :ask_for_dice ).and_return( 5 )
 
+			allow( player ).to receive( :valid_input? ).and_return( true )
 
+			expect( player ).to receive( :roll )
+
+			player.get_num_dice
+
+	  end
+
+	end #/.getnumdice
+
+	describe '#ask_for_dice' do
+
+		it 'should return a number' do
+
+			allow( player ).to receive( :gets ).and_return( "5" )
+
+			expect( player.ask_for_dice ).to eq( 5 )
+
+			player.ask_for_dice
 
 		end
 
-	end
 
+		it 'should call exit?' do
 
-		it 'should loop through request for input until valid'
+			allow( player ).to receive( :gets ).and_return( "5" )
 
+			expect( player ).to receive( :exit? )
 
-	describe '#valid_input' do
-
-		it 'should return false if bad input' do
-
-			expect( player.valid_input?( 0 ) ).to be false
-
-			player.valid_input?( 0 )
+			player.ask_for_dice
 
 		end
 
 
-	end
+
+	end #/.Ask for dice
 
 
 
+	describe '#valid_input?' do
 
 
 
-	# quits game
-	it 'should quit the game if the player enters the CMD'
+	end #/. valid input
 
 
-end
+end #/.Player
 
-=end

@@ -12,9 +12,9 @@ class Board
 	end
 
 
-	def render( p_score, cpu_score )
+	def render_totals( p_score, cpu_score )
 
-		puts "Player had #{p_score} and CPU had #{cpu_score}"
+		puts "You had #{p_score} and CPU had #{cpu_score}"
 
 	end
 

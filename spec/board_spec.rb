@@ -1,6 +1,7 @@
 
 require 'spec_helper'
 require 'player'
+require 'board'
 require 'game'
 
 describe '.Board' do
@@ -22,24 +23,24 @@ describe '.Board' do
 	# renders board
 	describe '#render' do
 
-		it 'should call the render method' do
+		it 'should call the render totals method' do
 
-			expect( board ).to receive( :render )
+			expect( board ).to receive( :render_totals )
 
-			board.render
+			board.render_totals( 5, 10 )
 
 		end
 
 	end
 	# displays messages
 
-	describe '#display' do
+	describe '#display_outcome' do
 
-		it 'should call the display method' do
+		it 'should call the display outcome method' do
 
-			expect( board ).to receive( :display )
+			expect( board ).to receive( :display_outcome )
 
-			board.display("hello")
+			board.display_outcome( 3, 3 )
 
 		end
 

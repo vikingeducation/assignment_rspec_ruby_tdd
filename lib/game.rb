@@ -1,19 +1,19 @@
 require_relative './player.rb'
 require_relative './board.rb'
-require_relative './dice.rb'
 require_relative './computer.rb'
 
 
 class Game
 
+	$num_dice = 0
 
 	attr_reader :current_player, :player
 
 	def initialize
 
-		@computer = Computer.new( "Computer" )
+		@computer = Computer.new
 		@board = Board.new
-		@player = Player.new( "Joe" )
+		@player = Player.new
 		@player_score = 0
 		@cpu_score = 0
 
@@ -38,7 +38,7 @@ class Game
 
 			check_result( total1, total2 )
 
-			@board.render( total1, total2 )
+			@board.render_totals( total1, total2 )
 			@board.display_outcome( @player_score, @cpu_score )
 
 		end
@@ -71,5 +71,5 @@ class Game
 end
 
 
-dice = Game.new
-dice.play
+#dice = Game.new
+#dice.play

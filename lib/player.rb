@@ -6,14 +6,6 @@ class Player
 
 	attr_reader :name, :board, :num_dice
 
-	def initialize( name = "Joe" )
-
-		@name = name
-		$num_dice = 0
-
-	end
-
-
 
 	def get_num_dice
 
