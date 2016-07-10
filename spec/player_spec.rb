@@ -76,7 +76,7 @@ describe '.Player' do
 
 			$num_dice = 1
 
-			expect( player.roll ).to be > 1
+			expect( player.roll ).to be >= 1
 
 		end
 
