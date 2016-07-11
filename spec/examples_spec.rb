@@ -23,7 +23,7 @@ describe Examples do
     it "returns the best two days to trade" do
       expect(subject.stock_picker([44, 30, 24, 32, 35, 30, 40, 38, 15])).to eq([2, 6])
     end
-    it "outputs a message if there's no increase in price" do 
+    it "outputs a message if there's no increase in price" do
       expect(subject).to receive(:puts)
       subject.stock_picker([1,1,1])
     end
@@ -34,10 +34,16 @@ describe Examples do
 
   describe "#anagrams" do
     it "takes two arguments" do
-      expect{subject.anagrams('', []).not_to raise_error}
+      expect{subject.anagrams('', [])}.not_to raise_error
     end
-    it "takes a string and an array as arguments" do 
-
+    it "takes a string and an array as arguments" do
+      expect{subject.anagrams([], [])}.to raise_error(ArgumentError)
+    end
+    it "returns an array" do
+      expect(subject.anagrams("looter", ["spooky, retool, rootle, tooler, toddler"])).to be_a(Array)
+    end
+    it "returns all the anagrams a word in an array" do
+      expect(subject.anagrams("looter", ["spooky, retool, rootle, tooler, toddler"])).to eq(["RETOOL", "ROOTLE", "TOOLER"])
     end
   end
 
