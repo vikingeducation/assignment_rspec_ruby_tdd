@@ -7,8 +7,8 @@ class Examples
     arr.each_with_index do |day_one, index1|
       arr.each_with_index do |day_two, index2|
         if index2 > index1 && day_two - day_one > max
-            max = day_two - day_one
-            result[0], result[1] = index1, index2
+          max = day_two - day_one
+          result[0], result[1] = index1, index2
         end
       end
     end
@@ -18,6 +18,10 @@ class Examples
 
   def anagrams(str, array)
     raise ArgumentError unless str.is_a?(String) && array.is_a?(Array)
-    array.select{ |word| word.chars.sort == string.chars.sort }
+    raise ArgumentError unless array.size ==1 && array[0].is_a?(String)
+    return [] if array.empty?
+    arr=array[0].upcase.split(', ')
+    str.upcase!
+    arr.select{ |word| word.split('').sort == str.split('').sort }
   end
 end

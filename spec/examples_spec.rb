@@ -34,16 +34,23 @@ describe Examples do
 
   describe "#anagrams" do
     it "takes two arguments" do
-      expect{subject.anagrams('', [])}.not_to raise_error
+      expect{subject.anagrams('', ["str"])}.not_to raise_error
     end
     it "takes a string and an array as arguments" do
-      expect{subject.anagrams([], [])}.to raise_error(ArgumentError)
+      expect{subject.anagrams([], ["str"])}.to raise_error(ArgumentError)
     end
     it "returns an array" do
       expect(subject.anagrams("looter", ["spooky, retool, rootle, tooler, toddler"])).to be_a(Array)
     end
-    it "returns all the anagrams a word in an array" do
+    it "returns all the anagrams of a word in an array" do
       expect(subject.anagrams("looter", ["spooky, retool, rootle, tooler, toddler"])).to eq(["RETOOL", "ROOTLE", "TOOLER"])
+    end
+    it "returns an empty array if there are no anagrams" do
+      expect(subject.anagrams("abc", ["spooky, retool, rootle, tooler, toddler"])).to eq([])
+    end
+    it "returns an error if the array does not contain one string" do
+      expect{subject.anagrams("abc", [123])}.to raise_error(ArgumentError)
+      expect {subject.anagrams("abc", ["abc", "bac"])}.to raise_error(ArgumentError)
     end
   end
 
