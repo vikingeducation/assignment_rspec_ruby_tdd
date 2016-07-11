@@ -1,4 +1,3 @@
-
 def stockpicker(arr)
   raise ArgumentError if !arr.is_a?(Array)
   raise ArgumentError if arr.length < 2

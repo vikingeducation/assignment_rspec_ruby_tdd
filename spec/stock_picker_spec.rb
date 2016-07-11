@@ -27,5 +27,4 @@ describe "stockpicker" do
   expect{stockpicker(arr)}.to raise_error(ArgumentError)
   end
 
-
 end
