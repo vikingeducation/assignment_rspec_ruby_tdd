@@ -10,12 +10,17 @@ def stock_picker(array)
       profitable_days[days] = profit
     end
   end
-
-  profitable_days.max_by {|days, profit| profit }[0]
-      
+  new_array = []
+  #profitable_days.max_by {|days, profit| profit }[0]
+  profitable_days.select { |k, v| new_array << k if v == profitable_days.values.max }
+  new_array.count == 1 ? new_array.flatten : new_array
 end
 
 
 def anagrams(string, words)
-  ["RETOOL", "ROOTLE", "TOOLER"]
+  raise ArgumentError if string.class != String
+  raise ArgumentError if words.class != Array
+  raise ArgumentError if string.split(" ").length > 1
+  words.select {|word|string.split("").sort == word.split("").sort}.map(&:upcase)
+    
 end
