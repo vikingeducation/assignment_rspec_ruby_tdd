@@ -1,0 +1,11 @@
+
+Game
+
+output instructions
+until quit?
+  ask for number of dice
+  display result
+  adjust scores
+  display scores
+end
+say goodbye
