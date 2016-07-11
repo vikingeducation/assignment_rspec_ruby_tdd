@@ -17,8 +17,6 @@ class Examples
   end
 
   def anagrams(str, array)
-    p str
-    p array
     raise ArgumentError unless str.is_a?(String) && array.is_a?(Array)
     array.select{ |word| word.chars.sort == string.chars.sort }
   end
