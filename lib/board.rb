@@ -3,14 +3,6 @@
 
 class Board
 
-	attr_reader :board
-
-	def initialize( board = nil )
-
-		@board = board
-
-	end
-
 
 	def render_totals( p_score, cpu_score )
 

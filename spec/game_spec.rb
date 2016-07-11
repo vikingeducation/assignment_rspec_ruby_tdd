@@ -4,8 +4,7 @@ require 'player'
 require 'game'
 
 describe '.Game' do
-# game
-	# initialize player and computer
+
 	let( :game ) { Game.new }
 
 	describe '#initialize' do
@@ -82,7 +81,7 @@ describe '.Game' do
 
 				game.check_result( 6, 5 )
 				game.check_result( 6, 5 )
-				# score is 0 2
+				# score is 2 : 0
 				game.check_result( 6, 5 )
 
 				expect( game.instance_variable_get( :@player_score ) ).to eq( 3 )
@@ -94,7 +93,7 @@ describe '.Game' do
 
 				game.check_result( 3, 5 )
 				game.check_result( 3, 5 )
-				# score is 0 2
+				# score is 0 : 2
 				game.check_result( 3, 5 )
 
 				expect( game.instance_variable_get( :@cpu_score ) ).to eq( 3 )

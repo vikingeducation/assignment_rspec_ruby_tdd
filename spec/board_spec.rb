@@ -19,8 +19,6 @@ describe '.Board' do
 	end
 
 
-	# board
-	# renders board
 	describe '#render' do
 
 		it 'should call the render totals method' do
@@ -32,7 +30,7 @@ describe '.Board' do
 		end
 
 	end
-	# displays messages
+
 
 	describe '#display_outcome' do
 
