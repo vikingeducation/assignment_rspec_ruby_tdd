@@ -1,0 +1,23 @@
+
+[1mFrom:[0m /home/morgan/workspace/assignments/assignment_rspec_ruby_tdd/lib/warmups.rb @ line 10 Object#stock_picker:
+
+     [1;34m2[0m: [32mdef[0m [1;34mstock_picker[0m(input)
+     [1;34m3[0m:   raise [1;34;4mArgumentError[0m [32munless[0m input.is_a?([1;34;4mArray[0m) && input.length > [1;34m1[0m
+     [1;34m4[0m:   raise [1;34;4mArgumentError[0m [32munless[0m input.all? { |item| item.is_a?([1;34;4mFixnum[0m) }
+     [1;34m5[0m:   buy_day, sell_day = [1;36mnil[0m, [1;36mnil[0m
+     [1;34m6[0m:   input.each_with_index [32mdo[0m |buy_price, first_day|
+     [1;34m7[0m:     input.each_with_index [32mdo[0m |sell_price, second_day|
+     [1;34m8[0m:       binding.pry
+     [1;34m9[0m:       buy_day = first_day [32mif[0m buy_day.nil?
+ => [1;34m10[0m:       sell_day = second_day [32mif[0m second_day.nil?
+    [1;34m11[0m:       [32mif[0m (sell_price - buy_price) > (input[sell_day] - input[buy_day])
+    [1;34m12[0m:         buy_day = first_day
+    [1;34m13[0m:         sell_day = second_day
+    [1;34m14[0m:       [32mend[0m
+    [1;34m15[0m:     [32mend[0m
+    [1;34m16[0m:   [32mend[0m
+    [1;34m17[0m:   raise [31m[1;31m"[0m[31mThere are no profits to be made here[1;31m"[0m[31m[0m [32munless[0m input[sell_day] > input[buy_day]
+    [1;34m18[0m:   [buy_day, sell_day]
+    [1;34m19[0m: 
+    [1;34m20[0m: [32mend[0m
+
