@@ -29,7 +29,7 @@ end
 
 describe "#anagrams" do 
   it "returns an array of anagrams that can be made with the string from the array" do
-    expect(anagrams("looter", ["spooky, retool, rootle, tooler, toddler"])).to eq(["RETOOL", "ROOTLE", "TOOLER"])
+    expect(anagrams("looter", ["spooky", "retool", "rootle", "tooler", "toddler"])).to eq(["RETOOL", "ROOTLE", "TOOLER"])
   end
 
   it "returns an array of anagrams that be made with a given string from an array with a second example" do

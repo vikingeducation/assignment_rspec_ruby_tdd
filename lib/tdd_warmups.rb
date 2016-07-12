@@ -21,6 +21,12 @@ def anagrams(string, words)
   raise ArgumentError if string.class != String
   raise ArgumentError if words.class != Array
   raise ArgumentError if string.split(" ").length > 1
-  words.select {|word|string.split("").sort == word.split("").sort}.map(&:upcase)
+  test = words.map{|word| word.split("").sort}
+  target = string.split("").sort
+  p test
+  p target
+  words = words.select {|word| string.split("").sort == word.split("").sort }
+
+  words.map(&:upcase)
     
 end
