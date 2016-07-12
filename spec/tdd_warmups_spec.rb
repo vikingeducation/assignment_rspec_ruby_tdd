@@ -14,23 +14,12 @@ describe "#stock_picker" do
       .to raise_error("Cannot pass array with one element.")
   end
 
-  it "conducts a search on the array argument" do
-    expect(argument).to receive(:each_index)
-    stock_picker(argument)
+  it "returns the buy and sell dates that would yield the most profit" do
+    expect(stock_picker(argument)).to eq([2,6])
   end
 
-  it "checks each day for the most profitable one" do
-    expect(Object).to receive(:compare_prices)
+  it "returns all the words in an array that are anagrams of a string" do
+    expect(anagrams("looter", ["spooky", "retool", "rootle", "tooler", "toddler"]))
+            .to eq(["RETOOL", "ROOTLE", "TOOLER"])
   end
-
-  it "it bases the state of being profitable on the 
-      difference between sale price on a day and buying 
-      price on another"
-
-  # it "test 1: checks for the most profitable day for buying and selling stock" do
-  # end
-
-  # it "test 2: checks for the most profitable day for buying and selling stock" do
-  # end
-
 end
