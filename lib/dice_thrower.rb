@@ -1,4 +1,6 @@
-class Game
+require 'player'
+
+class DiceThrower
   def initialize(human = nil, computer = nil, dice = nil)
     @human = human
     @computer = computer
@@ -8,7 +10,7 @@ class Game
 
   def play
 
-    loop
+    loop do
       num_dice = @human.get_number_of_dice
       @human.create_dice(num_dice)
       @computer.create_dice(num_dice)
@@ -27,5 +29,13 @@ class Game
       display_scores
       break if @human.quit?
     end
+  end
+
+  def compare_scores
+    @human
+  end
+
+  def display_scores
+
   end
 end

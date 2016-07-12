@@ -9,10 +9,11 @@ require 'dice_thrower'
 
 describe DiceThrower do
 
-  describe Game do
+  describe DiceThrower do
     let(:h) { double(get_number_of_dice: 3, create_dice: true, roll: 10, win: true, quit?: true) }
     let(:c) { double(create_dice: true, roll: 8, win: true) }
-    let(:game) { Game.new(h, c) }
+    let(:game) { DiceThrower.new(h, c) }
+    let(:view){double(output:nil)}
 
     describe "#initialize" do
       it "makes a player" do
@@ -36,22 +37,31 @@ describe DiceThrower do
       end
 
       it "calls computer roll" do
+        expect(c).to receive(:roll)
+        game.play
       end
 
       it "outputs the result of the round" do
+        expect(view).to receive(:output)
+        game.play
       end 
 
       it "outputs the total score" do
+        expect(view).to receive(:output)
+        game.play
       end
     end
   end
 
   describe Player do
+
     describe "#initialize" do
       it "sets wins to 0" do
+        expect(subject.wins).to eq(0)
       end
 
       it "creates an empty array of dice" do
+        expect(subject.dice).to eq([])
       end
     end
 
@@ -78,6 +88,7 @@ describe DiceThrower do
   end
 
 end
+
 
 #Game Class
 #makes a player and a computer
