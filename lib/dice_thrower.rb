@@ -1,6 +1,8 @@
 class Game
 
+  def throw
 
+  end
 
 end
 
@@ -17,7 +19,7 @@ end
 
 
 
-class Dice
+class Computer
 
 
 
