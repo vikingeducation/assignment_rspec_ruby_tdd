@@ -23,5 +23,9 @@ describe 'anagram.rb' do
     expect(anagram "looter", %w(spooky retool rootle tooler toddler)).to eq(["RETOOL", "ROOTLE", "TOOLER"])
   end
   # mock up the dictionary test
+  it 'does not need a dictionary input' do
+    allow(File).to receive(:readlines).and_return(%w(spooky retool rootle tooler toddler))
+    expect(anagram "looter").to eq(["RETOOL", "ROOTLE", "TOOLER"])
+  end
 
 end
