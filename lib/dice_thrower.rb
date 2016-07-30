@@ -1,3 +1,5 @@
+require 'player.rb'
+require 'computer.rb'
 =begin
 class: DiceThrower
   main_action: play, show_result
@@ -7,5 +9,4 @@ class: Player
 
 class: Computer
   main_action: throw_dice
-
 =end
