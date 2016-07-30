@@ -9,4 +9,8 @@ class Player
     end
     output.to_i
   end
+
+  def throw_dice dices
+    rand(1..6) * dices
+  end
 end

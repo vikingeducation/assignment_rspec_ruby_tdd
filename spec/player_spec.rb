@@ -28,7 +28,7 @@ describe Player do
       expect(player.input).to eq(3)
     end
 
-    it 'get next value if user input is not a string' do
+    it 'get next value if user input is a string' do
       allow(player).to receive(:gets).and_return("hello", "fuck", "5")
       expect(player.input).to eq(5)
     end
@@ -36,6 +36,20 @@ describe Player do
     it 'get next value if user input is a float' do
       allow(player).to receive(:gets).and_return("3.5", "4.3", "6")
       expect(player.input).to eq(6)
+    end
+  end
+
+  context '#throw_dice' do
+    it 'return 1~6 with 1 dice' do
+      100.times do
+        expect(player.throw_dice 1).to be_between(1, 6)
+      end
+    end
+
+    it 'return 50~300 with 50 dices' do
+      100.times do
+        expect(player.throw_dice 50).to be_between(50, 300)
+      end
     end
   end
 end

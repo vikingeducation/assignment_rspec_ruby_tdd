@@ -13,8 +13,15 @@ class: Computer
 =end
 
 class DiceThrower
-  def initialize(name = "Emily")
-    # @player = Player.new(name)
-    # @computer = Computer.new
+  def initialize
+    @player = Player.new
+    @computer = Computer.new
+  end
+
+  def play
+    while true
+      dices = @player.input
+      break
+    end
   end
 end
