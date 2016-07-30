@@ -1,1 +1,1 @@
-require 'dice_thrower.rb'
+require 'computer.rb'
