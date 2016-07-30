@@ -19,9 +19,15 @@ class DiceThrower
   end
 
   def play
-    while true
-      dices = @player.input
+    loop do
+      # dices = @player.input
       break
     end
+    say_good_bye
+  end
+
+  #private method
+  def say_good_bye
+    puts "Bye bye ~~ We will missss you"
   end
 end
