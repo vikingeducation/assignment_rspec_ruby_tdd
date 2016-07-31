@@ -1,4 +1,5 @@
 class Player
+
   def input
     puts "How many dices do you want to throw? (q to quit the game)"
     output = gets.chomp

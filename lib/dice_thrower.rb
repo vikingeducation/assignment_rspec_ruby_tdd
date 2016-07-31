@@ -13,17 +13,29 @@ class: Computer
 =end
 
 class DiceThrower
-  def initialize
-    @player = Player.new
-    @computer = Computer.new
+  def initialize(player: Player.new, computer: Computer.new)
+    @player = player
+    @computer = computer
   end
 
   def play
     loop do
-      # dices = @player.input
-      break
+      dices = @player.input
+      break if dices == 'q'
+      player_sum = @player.throw_dice dices
+      computer_sum = @computer.throw_dice dices
+      show_result player_sum, computer_sum
     end
     say_good_bye
+  end
+
+  def show_result player_sum, computer_sum
+    result = player_sum <=> computer_sum
+    case result
+    when 1 then puts 'You win!'
+    when -1 then puts 'Computer win!'
+    when 0 then puts 'Even game, play again!'
+    end
   end
 
   #private method
