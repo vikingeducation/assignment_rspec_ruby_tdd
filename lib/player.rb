@@ -12,6 +12,10 @@ class Player
   end
 
   def throw_dice dices
-    rand(1..6) * dices
+    sum = 0
+    dices.times do
+      sum += rand(1..6)
+    end
+    sum
   end
 end

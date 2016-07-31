@@ -1,5 +1,5 @@
-require 'player.rb'
-require 'computer.rb'
+require_relative 'player.rb'
+require_relative 'computer.rb'
 =begin
 class: DiceThrower
   main_action: play, show_result
@@ -32,10 +32,11 @@ class DiceThrower
   def show_result player_sum, computer_sum
     result = player_sum <=> computer_sum
     case result
-    when 1 then puts 'You win!'
+    when 1 then puts "You win!"
     when -1 then puts 'Computer win!'
     when 0 then puts 'Even game, play again!'
     end
+    puts "You throw #{player_sum}, computer_sum throw #{computer_sum}"
   end
 
   #private method
