@@ -1,7 +1,6 @@
 DICTIONARY = File.open('enable.txt').read
 
 def anagrams(word)
-  raise ArgumentError unless word.is_a?(String)
   ana_candidates = []
   DICTIONARY.each_line do |candidate|
     if (candidate.length - 1) == word.length
