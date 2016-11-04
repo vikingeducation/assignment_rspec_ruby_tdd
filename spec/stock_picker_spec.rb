@@ -14,8 +14,14 @@ describe '#stock_picker' do
   end
 
   it 'returns a two element array when given valid input' do
-    
+    expect(stock_picker([1,2])).to eq([0,1])
   end
 
+  it 'raises an error if its not possible to profit' do
+    expect{ stock_picker([4,3]) }.to raise_error "No profit possible"
+  end
+
+  xit 'returns most profitable days to buy and sell from a set of stock prices' do
+  end
 
 end
