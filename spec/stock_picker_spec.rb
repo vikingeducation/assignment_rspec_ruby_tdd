@@ -21,7 +21,8 @@ describe '#stock_picker' do
     expect{ stock_picker([4,3]) }.to raise_error "No profit possible"
   end
 
-  xit 'returns most profitable days to buy and sell from a set of stock prices' do
+  it 'returns most profitable days to buy and sell from a set of stock prices' do
+    expect(stock_picker([44, 30, 24, 32, 35, 30, 40, 38, 15])).to eq([2,6])
   end
 
 end
