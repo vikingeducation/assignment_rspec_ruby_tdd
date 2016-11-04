@@ -3,6 +3,8 @@ describe Warmups do
   let(:warmups){ Warmups.new }
   let(:prices){ [ 44, 30, 24, 32, 35, 30, 40, 38, 15 ] }
   let(:not_prices) { [ 44, 30, "two", 5] }
+  let(:neg_prices) { [-2, -8, -3] }
+
   describe '#stock_picker' do
 
     it 'is a method on the Warmups class' do
@@ -24,5 +26,25 @@ describe Warmups do
     it 'requires at least two prices' do 
       expect{warmups.stock_picker([1])}.to raise_error("You need at least two prices")
     end
+
+    it 'requires all prices to be positive' do
+      expect{warmups.stock_picker(neg_prices)}.to raise_error("All prices must be positive")
+    end
+
+    it 'returns an array' do
+      expect(warmups.stock_picker(prices)).to be_an(Array)
+    end
+
+    it 'returns an array of 2 numbers' do
+      expect(warmups.stock_picker(prices).length).to eq(2)
+    end
+
+    it 'returns the correct days for a set of 2 prices' do
+      expect(warmups.stock_picker([1,2])).to eq([0,1])
+      expect(warmups.stock_picker([3,1])).to eq([0,1])
+    end
+
+
+
   end
 end
