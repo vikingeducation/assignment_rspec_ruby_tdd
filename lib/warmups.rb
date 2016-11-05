@@ -9,18 +9,14 @@ class Warmups
     max_profit = 0
 
     prices.each do |buy_price| 
-      remaining_prices(prices, buy_price).each do |sell_price| 
-        puts "buy_price: #{buy_price} | sell_price: #{sell_price} | max_profit: #{max_profit}"      
+      remaining_prices(prices, buy_price).each do |sell_price|       
         if (prices.find_index(buy_price) == 0) && (prices.find_index(sell_price) == 1)
           max_profit = sell_price - buy_price
-          puts "#{max_profit} running!"
         elsif sell_price - buy_price > max_profit
           buy_date = prices.find_index(buy_price)
           sell_date = prices.find_index(sell_price)
           max_profit = sell_price - buy_price
-          puts "me too!"
         end
-
       end
     end
 
@@ -29,7 +25,7 @@ class Warmups
   end
 
   def remaining_prices(prices, buy_price)
-    prices[(prices.find_index(buy_price)+1)..prices[-1]]
+    prices[(prices.find_index(buy_price)+1)..-1]
   end
 
   def validate_stock_input(prices)
