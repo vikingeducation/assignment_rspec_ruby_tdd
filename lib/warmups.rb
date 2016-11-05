@@ -1,3 +1,5 @@
+require 'pry'
+
 class Warmups
 
   def stock_picker(prices)
@@ -5,21 +7,29 @@ class Warmups
     buy_date = 0
     sell_date = 1
     max_profit = 0
+
     prices.each do |buy_price| 
-      prices[prices.find_index(buy_price)..prices[-1]]
-      prices.each do |sell_price|
-        if prices.find_index(buy_price) == 0
+      remaining_prices(prices, buy_price).each do |sell_price| 
+        puts "buy_price: #{buy_price} | sell_price: #{sell_price} | max_profit: #{max_profit}"      
+        if (prices.find_index(buy_price) == 0) && (prices.find_index(sell_price) == 1)
           max_profit = sell_price - buy_price
-        end
-        if sell_price - buy_price > max_profit && prices.find_index(buy_price) < prices.find_index(sell_price)
+          puts "#{max_profit} running!"
+        elsif sell_price - buy_price > max_profit
           buy_date = prices.find_index(buy_price)
           sell_date = prices.find_index(sell_price)
           max_profit = sell_price - buy_price
+          puts "me too!"
         end
+
       end
     end
+
     [buy_date, sell_date]
 
+  end
+
+  def remaining_prices(prices, buy_price)
+    prices[(prices.find_index(buy_price)+1)..prices[-1]]
   end
 
   def validate_stock_input(prices)
@@ -30,3 +40,6 @@ class Warmups
   end
 
 end
+
+warmup = Warmups.new
+warmup.stock_picker([12,2,1])
