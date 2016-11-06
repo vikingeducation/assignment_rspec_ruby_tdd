@@ -1,0 +1,12 @@
+source 'https://rubygems.org'
+
+gem 'bump'
+gem 'bundler', '~> 1.13'
+gem 'guard', '~> 2.14'
+gem 'guard-rspec', '~> 4.7.3'
+gem 'pry', '~> 0.10'
+gem 'pry-nav', '~> 0.2.4'
+gem 'pry-remote', '~> 0.1.8'
+gem 'rake', '~> 10.0'
+gem 'rspec', '~> 3.5'
+gem 'rspec-nc', '~> 0.3'
