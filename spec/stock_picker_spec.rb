@@ -5,13 +5,13 @@ describe "#stock_picker" do
   it "raises an error if stock prices are not in an array" do 
     expect do
       stock_picker("not an array")
-    end.to raise_error
+    end.to raise_error("Error: invalid argument")
   end
 
   it "raises an error if stock prices are not numbers" do 
     expect do 
-      stock_picker["hello","my",:name,"is"]
-    end.to raise_error
+      stock_picker(["hello","my",:name,"is"])
+    end.to raise_error("Error: invalid argument")
   end
 
   it "returns 0 if stock prices array is empty" do 
