@@ -20,7 +20,7 @@ describe "#anagrams" do
     str = "looter"
     arr =  %w(spooky retool rootle tooler toddler)
     result = ["RETOOL", "ROOTLE", "TOOLER"]
-    expect(IO).to receive(:readlines  ).and_return(arr)
+    expect(IO).to receive(:readlines).and_return(arr)
     expect(anagrams(str)).to eq(result)
   end
 
