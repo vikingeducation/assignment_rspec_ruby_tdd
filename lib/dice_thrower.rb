@@ -16,16 +16,8 @@ class Game
       Render.enter_dice
       num_dice = @human.set_dice_num
       players_roll(num_dice)
-      display_scores
-      if @human.total > @computer.total 
-        puts "You win!"
-        @human.update_score
-      elsif @human.total < @computer.total 
-        puts "Computer wins!"
-        @computer.update_score
-      else
-        puts "Tie!"
-      end
+      display_rolls
+      choose_winner
       break unless play_again?
     end
   end
@@ -44,9 +36,21 @@ class Game
     @computer.roll_dice(num_dice)
   end
 
-  def display_scores
-    puts "Your score: #{@human.total}"
-    puts "Computer's score: #{@computer.total}" 
+  def display_rolls
+    puts "Your roll: #{@human.total}"
+    puts "Computer's roll #{@computer.total}" 
+  end
+
+  def choose_winner 
+    if @human.total > @computer.total 
+      puts "You win!"
+      @human.update_score
+    elsif @human.total < @computer.total 
+      puts "Computer wins!"
+      @computer.update_score
+    else
+      puts "Tie!"
+    end
   end
 
 end
@@ -109,7 +113,7 @@ class Render
     puts "Instructions:"
     puts "Enter how many dice you'd like to throw"
     puts "If your total is higher than the computer, you win!"
-    puts "Enter 'q' to quit."
+    print "Enter 'q' to quit."
   end
 
   def self.show_scores(player_score, computer_score)

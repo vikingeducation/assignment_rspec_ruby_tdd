@@ -16,33 +16,33 @@ describe Game do
 
   end
 
-  describe '#run' do 
+#   describe '#run' do 
 
-    it 'displays the welcome message' do 
-      expect(Render).to receive(:welcome)
-      game.run
-    end
+#     it 'displays the welcome message' do 
+#       expect(Render).to receive(:welcome)
+#       game.run
+#     end
 
-    it 'displays the instructions' do 
-      expect(Render).to receive(:instructions)
-      game.run
-    end
+#     it 'displays the instructions' do 
+#       expect(Render).to receive(:instructions)
+#       game.run
+#     end
 
-    it 'displays the score' do 
-      expect(Render).to receive(:show_scores)
-      game.run
-    end
+#     it 'displays the score' do 
+#       expect(Render).to receive(:show_scores)
+#       game.run
+#     end
 
-    it 'asks for the dice number' do 
-      expect(Render).to receive(:enter_dice)
-      game.run
-    end
+#     it 'asks for the dice number' do 
+#       expect(Render).to receive(:enter_dice)
+#       game.run
+#     end
 
-    it 'successfully gets the dice number' do 
-      allow(game.human).to receive(:set_dice_num)
-    end
+#     it 'successfully gets the dice number' do 
+#       allow(game.human).to receive(:set_dice_num)
+#     end
 
-  end
+#   end
 
 end
 
@@ -125,25 +125,37 @@ end
 
 describe Render do 
 
-  describe "#welcome" do 
+  describe ".welcome" do 
 
     it 'welcomes the player with a message' do 
-      welcome_msg = "Welcome to Dice Thrower\n"
+      welcome_msg = "\nWelcome to Dice Thrower\n"
       expect{ Render.welcome }.to output(welcome_msg).to_stdout
     end
 
+  end
+
+  describe ".instructions" do 
+
     it 'provides instructions to the player' do 
-      instructions = "Instructions:\nEnter how many dice you'd like to throw\nIf your total is higher than the computer, you win!\nEnter \'q\' to quit.\n"
+      instructions = "\nInstructions:\nEnter how many dice you'd like to throw\nIf your total is higher than the computer, you win!\nEnter \'q\' to quit."
       expect{ Render.instructions }.to output(instructions).to_stdout
     end
 
+  end
+
+  describe ".show_scores" do 
+
     it 'outputs the score' do 
-      score = "***** SCORE *****\nYou:\t0 wins\nClue:\t0 wins\n*****************\n"
+      score = "\n***** SCORE *****\nYou:\t0 wins\nClue:\t0 wins\n*****************\n"
       expect{ Render.show_scores(0, 0) }.to output(score).to_stdout
     end
 
+  end
+
+  describe '.enter_dice' do
+
     it 'asks the player to enter number of dice to throw' do
-      enter_dice_msg = "Enter number of dice to throw:"
+      enter_dice_msg = "\nEnter number of dice to throw: "
       expect{ Render.enter_dice }.to output(enter_dice_msg).to_stdout
     end
 
