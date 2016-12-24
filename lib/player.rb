@@ -20,11 +20,15 @@ class Player
 
 	def prompt_user
 		num_dice_to_throw = 0
+		user_input = ''
 		loop do
 			puts "Enter number of dice to throw"
-			num_dice_to_throw = gets.chomp.to_i
+			user_input = gets.chomp
+			break if user_input == 'q'
+			num_dice_to_throw = user_input.to_i
 			break if num_dice_to_throw > 0
 		end
+		num_dice_to_throw = -1 if user_input == 'q'
 		num_dice_to_throw
 	end
 

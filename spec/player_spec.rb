@@ -22,6 +22,11 @@ describe Player do
 		expect(human.make_choice).to eq(3)
 	end
 
+	it 'can quit if user enter \'q\'' do
+		expect(human).to receive(:gets).and_return("kkkhhhhh","q")
+		expect(human.make_choice).to eq(-1)
+	end
+
 	it 'throws error if type is not valid' do
 		expect{Player.new("Invalid")}.to raise_error("Bad player type specified")
 	end
