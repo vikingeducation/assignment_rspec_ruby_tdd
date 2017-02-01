@@ -3,10 +3,6 @@
 def stock_picker(stock_prices)
   raise ArgumentError, "Not provided an array" unless stock_prices.is_a?(Array)
 
-
-  min_day = stock_prices.index(stock_prices.min)
-
-
   min = stock_prices[0]
   max = stock_prices[0]
   days = [0,1]
