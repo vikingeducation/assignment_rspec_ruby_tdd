@@ -2,17 +2,6 @@
 require 'anagrams'
 
 describe 'anagrams' do
- # let(:dbl) { double }
- #  before { expect(dbl).to receive(:anagrams).with(/bar/, []) }
-
-
-  # it 'passes when the args match' do
-
-
-  #    expect(anagrams("hello", ["yes", "no"]))
-  # end
-
-  
 
   it 'raises an error if the wrong number of arguments are supplied' do
      expect{anagrams("hello", ["yes", "no"], 2)}.to raise_error(ArgumentError)
