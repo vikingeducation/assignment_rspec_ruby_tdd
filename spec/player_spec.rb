@@ -20,6 +20,19 @@ describe Player do
     end
   end
 
+
+  describe 'wins' do
+    it 'the player starts off with zero wins' do
+      expect(player.wins).to eq(0)
+    end
+  end
+
+  describe 'total of all the dice' do
+    it 'the player starts off with a total of zero, i.e. no dice thrown' do
+      expect(player.total).to eq(0)
+    end
+  end
+
   describe '#roll_dice' do
     it 'expect the player total to more than or qual to 4 and less than or equal to 24 with 4 dice' do
       # expect(player.roll(4)).to eq(player.num_dice)

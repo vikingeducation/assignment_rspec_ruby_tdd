@@ -1,6 +1,6 @@
 
-# Rolls dice against the human player
-class Computer < Player
+# Human player
+class Human < Player
 
   attr_accessor :num_dice, :total, :dice, :wins
 

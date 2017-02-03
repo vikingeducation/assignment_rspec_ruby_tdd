@@ -1,12 +1,13 @@
 # All actions related to the Player
-require 'dice'
+require_relative 'dice'
 
 class Player
-  attr_accessor :num_dice, :total, :dice
+  attr_accessor :num_dice, :total, :dice, :wins
 
   def initialize
     @total = 0
     @dice = Dice.new(6)
+    @wins = 0
   end
 
   def no_of_dice(n)
