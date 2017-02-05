@@ -1,7 +1,7 @@
 # Running of the game - user competing withe AI computer for the highest total of rolling die
-require 'player'
-require 'computer'
-require 'human'
+require_relative 'player'
+require_relative 'computer'
+require_relative 'human'
 
 class Game
 
