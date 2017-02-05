@@ -4,8 +4,8 @@ require 'dice'
 describe 'Dice' do 
   let(:dice){Dice.new(6)}
 
-  describe "#intialize" do
-    it "#intializes a Dice of type dice" do
+  describe "#initialize" do
+    it "#initializes a Dice of type dice" do
       expect(dice).to be_a(Dice)
     end
 

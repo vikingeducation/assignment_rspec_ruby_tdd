@@ -1,5 +1,5 @@
 # All actions related to the Player
-require_relative 'dice'
+require 'dice'
 
 class Player
   attr_accessor :num_dice, :total, :dice, :wins

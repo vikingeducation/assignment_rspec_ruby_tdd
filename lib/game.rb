@@ -1,4 +1,7 @@
 # Running of the game - user competing withe AI computer for the highest total of rolling die
+require 'player'
+require 'computer'
+require 'human'
 
 class Game
 
@@ -19,7 +22,7 @@ class Game
       input = gets.chomp
       input_num = input.to_i
 
-      if((input_num).is_a? Numeric)
+      if(((input_num).is_a? Numeric) && input_num != 0) 
       
         # Store the number of die
         @human.no_of_dice(input_num)
@@ -30,7 +33,8 @@ class Game
         @computer.roll(input_num)
 
         check_who_won
-        render
+        statistics
+        reset_player_totals
       end
 
       break if input == "q"   
@@ -52,10 +56,10 @@ class Game
   end
 
   # output running total
-  def render
+  def statistics
     puts "***** SCORE *****"
     puts "You: #{@human.wins} wins"
-    puts "Clue:#{@computer.wins} wins"
+    puts "Clue: #{@computer.wins} wins"
     puts "*****************"
   end
 
@@ -67,6 +71,10 @@ class Game
       puts "Computer won with #{@computer.total}"
       @computer.wins += 1
     end
+  end
+
+  def reset_player_totals
+    @human.total, @computer.total = 0, 0
   end
 
 end

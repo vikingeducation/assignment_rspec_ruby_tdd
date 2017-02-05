@@ -35,7 +35,6 @@ describe Player do
 
   describe '#roll_dice' do
     it 'expect the player total to more than or qual to 4 and less than or equal to 24 with 4 dice' do
-      # expect(player.roll(4)).to eq(player.num_dice)
       player.roll(4)
       expect(player.total).to be_between(4,24).inclusive
     end

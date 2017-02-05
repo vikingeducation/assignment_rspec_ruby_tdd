@@ -7,12 +7,4 @@ class Computer < Player
   def initialize
     super
   end
-
-  # def no_of_dice(n)
-  #   super
-  # end
-
-  # def roll(num_dice)
-  #   super
-  # end 
 end
