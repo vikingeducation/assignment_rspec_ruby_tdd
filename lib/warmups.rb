@@ -16,3 +16,13 @@ def stock_picker(stocks)
     end
   end
 end
+
+def anagrams(string, words)
+  words.reduce([]) do |result, word|
+    if word.chars.sort.join == string.chars.sort.join
+      result << word.upcase
+    else
+      result
+    end
+  end
+end
