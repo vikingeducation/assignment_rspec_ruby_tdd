@@ -1,4 +1,6 @@
-def stock_picker(stocks)
+module Warmups
+
+def self.stock_picker(stocks)
   result = {buy: nil, sell: nil, profit: nil}
   (0...stocks.length).reduce(result) do |result, buy_day|
     (buy_day...stocks.length).reduce(result) do |partial, sell_day|
@@ -17,7 +19,7 @@ def stock_picker(stocks)
   end
 end
 
-def anagrams(string, words)
+def self.anagrams(string, words)
   words.reduce([]) do |result, word|
     if word.chars.sort.join == string.chars.sort.join
       result << word.upcase
@@ -25,4 +27,6 @@ def anagrams(string, words)
       result
     end
   end
+end
+
 end
