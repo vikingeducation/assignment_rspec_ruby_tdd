@@ -22,6 +22,8 @@ class Warmup
   end
 
   def anagrams(string, words)
+    raise "Your first argument is not a string." unless string.is_a?(String)
+
     return [] if string.empty? || words.empty?
   end
 end
