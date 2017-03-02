@@ -45,16 +45,20 @@ describe "Warmup" do
       expect(warmup.anagrams("herpderp", [])).to eq([])
     end
 
-    it "raises an error if the first argument is not a String" do
-      expect { warmup.anagrams(["not a string"], []) }.to raise_error(/not a string/)
+    it "raises an error unless all of the items in the input array are strings" do
+      expect { warmup.anagrams("herp", ["derp", 1]) }.to raise_error(/only contain strings/)
     end
 
-    it "raises an error if the first argument is not a single String"
+    it "returns all possible anagrams in uppercase" do
+      expect(warmup.anagrams("looter", %w(spooky retool rootle tooler toddler))).to eq(["RETOOL", "ROOTLE", "TOOLER"])
+    end
 
-    it "raises an error if the second argument is not an Array"
+    it "does not include the original word as an anagram" do
+      expect(warmup.anagrams("lemon", %w(lemon melon))).to eq(["MELON"])
+    end
 
-    it "raises an error unless all of the items in the input array are strings"
-
-    it "returns all possible anagrams in uppercase"
+    it "returns an empty array if there are no anagrams" do
+      expect(warmup.anagrams("zygote", %w(spooky retool rootle tooler toddler))).to eq([])
+    end
   end
 end

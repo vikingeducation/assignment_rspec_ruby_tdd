@@ -21,9 +21,20 @@ class Warmup
     max_profit == 0 ? [] : [best_day_to_buy, best_day_to_sell]
   end
 
-  def anagrams(string, words)
-    raise "Your first argument is not a string." unless string.is_a?(String)
+  def anagrams(word, dictionary)
+    return [] if word.empty? || dictionary.empty?
 
-    return [] if string.empty? || words.empty?
+    raise "Your dictionary can only contain strings." unless dictionary.all? { |word| word.is_a?(String) }
+
+    output = []
+    dictionary.each do |dict_word|
+      next unless word.length == dict_word.length
+
+      next if word == dict_word
+
+      output.push(dict_word.upcase) if dict_word.chars.sort == word.chars.sort
+    end
+
+    output
   end
 end
