@@ -38,4 +38,16 @@ describe "Warmup" do
       expect(warmup.stock_picker([100, 50.4, 50.5])).to eq([1, 2])
     end
   end
+
+  describe "anagrams" do
+    it "returns an empty array if either of its arguments are empty"
+
+    it "raises an error if the first argument is not a String"
+
+    it "raises an error if the second argument is not an Array"
+
+    it "raises an error unless all of the items in the input array are strings"
+
+    it "returns all possible anagrams in uppercase"
+  end
 end
