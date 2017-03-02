@@ -47,6 +47,8 @@ describe "Warmup" do
 
     it "raises an error if the first argument is not a String"
 
+    it "raises an error if the first argument is not a single String"
+
     it "raises an error if the second argument is not an Array"
 
     it "raises an error unless all of the items in the input array are strings"
