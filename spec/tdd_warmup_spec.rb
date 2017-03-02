@@ -45,7 +45,9 @@ describe "Warmup" do
       expect(warmup.anagrams("herpderp", [])).to eq([])
     end
 
-    it "raises an error if the first argument is not a String"
+    it "raises an error if the first argument is not a String" do
+      expect { warmup.anagrams(["not a string"], []) }.to raise_error(/not a string/)
+    end
 
     it "raises an error if the first argument is not a single String"
 
