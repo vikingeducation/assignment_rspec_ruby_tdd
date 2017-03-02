@@ -40,7 +40,10 @@ describe "Warmup" do
   end
 
   describe "anagrams" do
-    it "returns an empty array if either of its arguments are empty"
+    it "returns an empty array if either of its arguments are empty" do
+      expect(warmup.anagrams("", %w(herp derp))).to eq([])
+      expect(warmup.anagrams("herpderp", [])).to eq([])
+    end
 
     it "raises an error if the first argument is not a String"
 

@@ -20,4 +20,8 @@ class Warmup
 
     max_profit == 0 ? [] : [best_day_to_buy, best_day_to_sell]
   end
+
+  def anagrams(string, words)
+    return [] if string.empty? || words.empty?
+  end
 end
