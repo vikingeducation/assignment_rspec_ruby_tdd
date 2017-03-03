@@ -1,7 +1,7 @@
 # spec/dice_spec.rb
 
 require 'dice'
-include DiceGame
+include DiceThrower
 
 describe "Dice" do
   let (:dice) { Dice.new }
