@@ -17,11 +17,11 @@ describe "Dice" do
       expect([1, 2, 3, 4, 5, 6]).to include(dice.roll)
 
       test_rolls = []
-      100000.times do
+      10000.times do
         test_rolls.push(dice.roll)
       end
 
-      expect(test_rolls.all? { |roll| [1, 2, 3, 4, 5, 6].include?(roll) })
+      expect(test_rolls.all? { |roll| [1, 2, 3, 4, 5, 6].include?(roll) }).to be_truthy
     end
   end
 end
