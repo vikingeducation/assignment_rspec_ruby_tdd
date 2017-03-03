@@ -61,8 +61,8 @@ describe "Human" do
       expect((3..18).to_a).to include(human.roll_dice(3))
 
       test_rolls = []
-      100.times { test_rolls.push(human.roll_dice(3)) }
-      expect(test_rolls.all? { |roll| (3..18).to_a.include?(roll) })
+      10000.times { test_rolls.push(human.roll_dice(3)) }
+      expect(test_rolls.all? { |roll| (3..18).to_a.include?(roll) }).to be_truthy
     end
   end
 end
