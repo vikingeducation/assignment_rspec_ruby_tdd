@@ -11,8 +11,8 @@ describe "Human" do
       expect(human).to be_a(Human)
     end
 
-    it "sets the Human's name to 'Derp'" do
-      expect(human.name).to eq("Derp")
+    it "sets the Human's name to 'You'" do
+      expect(human.name).to eq("You")
     end
 
     it "gives the Human a single dice" do

@@ -6,7 +6,7 @@ module DiceThrower
                 :dice
 
     def initialize
-      @name = 'Derp'
+      @name = 'You'
       @dice = Dice.new
     end
 
