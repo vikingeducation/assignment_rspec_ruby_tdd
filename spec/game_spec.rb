@@ -79,11 +79,17 @@ describe "Game" do
   end
 
   describe "#over?" do
-    it "returns true if the Human player has entered 'q'" do
+    it "returns true if the Human player's last_input is 'q'" do
       # using a double
-      human_double = instance_double("Human", get_input: 'q')
+      human_double = instance_double("Human", last_input: 'q')
       
-      game = Game.new(human_double)
+      game_with_double = Game.new(human_double)
+      expect(game_with_double.over?).to be_truthy
+
+      # using an actual Human object
+      allow(game.human).to receive(:print).and_return(nil)
+      allow(game.human).to receive(:gets).and_return('q')
+      game.human.get_input
       expect(game.over?).to be_truthy
     end
   end

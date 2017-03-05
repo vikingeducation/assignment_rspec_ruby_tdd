@@ -32,7 +32,7 @@ module DiceThrower
     end
 
     def over?
-      @human.get_input == 'q'
+      @human.last_input == 'q'
     end
 
     def quit
