@@ -66,6 +66,15 @@ describe "Human" do
       human.get_input
       expect(human.last_input).to eq("q")
     end
+
+    it "asks the user for input again if the user has entered neither a valid number nor 'q'" do
+      allow(human).to receive(:print).and_return(nil)
+      allow(human).to receive(:puts).and_return(nil)
+      allow(human).to receive(:gets).and_return("not valid", "3")
+
+      human.get_input
+      expect(human.last_input).to eq(3)
+    end
   end
 
   describe "#roll_dice" do
