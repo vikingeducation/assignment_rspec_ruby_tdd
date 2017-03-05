@@ -3,11 +3,13 @@ require_relative "./dice"
 module DiceThrower
   class Human
     attr_reader :name,
-                :dice
+                :dice,
+                :last_input
 
     def initialize
       @name = 'You'
       @dice = Dice.new
+      @last_input = nil
     end
 
     def get_input
