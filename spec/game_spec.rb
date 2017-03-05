@@ -66,6 +66,32 @@ describe "Game" do
   end
 
   describe "#play" do
+    it "takes a turn" do
+      human_double = instance_double("Human", get_input: 3, roll_dice: 18)
+      computer_double = instance_double("Computer", roll_dice: 15)
+      test_game = Game.new(human_double, computer_double)
+
+      # prints instructions
+      expect(test_game).to receive(:print_instructions).and_return(nil)
+
+      # asks Human for input
+      expect(test_game.human).to receive(:get_input).and_return(3)
+
+      # rolls dice for Human and Computer
+      expect(test_game.human).to receive(:roll_dice).with(3).and_return(18)
+      expect(test_game.computer).to receive(:roll_dice).with(3).and_return(15)
+
+      # # checks for a tie
+      # expect(test_game).to receive(:tie?).with(18, 15).and_return(false)
+
+      # # increments score of round winner (Human)
+      # expect(test_game).to receive(:increment_human_score)
+      # expect(test_game).not_to receive(:increment_computer_score)
+      # expect(test_game.human_score).to eq(1)
+      # expect(test_game.computer_score).to eq(0)
+
+      test_game.play
+    end
   end
 
   describe "#tie?" do
