@@ -17,6 +17,11 @@ module DiceThrower
 
     def play
       print_instructions
+
+      num_rolls = human.get_input
+
+      human_roll = human.roll_dice(num_rolls)
+      computer_roll = computer.roll_dice(num_rolls)
     end
 
     def increment_human_score
