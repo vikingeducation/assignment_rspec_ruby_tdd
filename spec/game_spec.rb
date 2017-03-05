@@ -61,36 +61,7 @@ describe "Game" do
 
   describe "increment_computer_score" do
     it "increases the Computer's score by one" do
-      game.increment_computer_score
-    end
-  end
-
-  describe "#play" do
-    it "takes a turn" do
-      human_double = instance_double("Human", get_input: 3, roll_dice: 18)
-      computer_double = instance_double("Computer", roll_dice: 15)
-      test_game = Game.new(human_double, computer_double)
-
-      # prints instructions
-      expect(test_game).to receive(:print_instructions).and_return(nil)
-
-      # asks Human for input
-      expect(test_game.human).to receive(:get_input).and_return(3)
-
-      # rolls dice for Human and Computer
-      expect(test_game.human).to receive(:roll_dice).with(3).and_return(18)
-      expect(test_game.computer).to receive(:roll_dice).with(3).and_return(15)
-
-      # # checks for a tie
-      # expect(test_game).to receive(:tie?).with(18, 15).and_return(false)
-
-      # # increments score of round winner (Human)
-      # expect(test_game).to receive(:increment_human_score)
-      # expect(test_game).not_to receive(:increment_computer_score)
-      # expect(test_game.human_score).to eq(1)
-      # expect(test_game.computer_score).to eq(0)
-
-      test_game.play
+      expect(game.increment_computer_score).to eq(1)
     end
   end
 
@@ -107,7 +78,7 @@ describe "Game" do
   describe "#over?" do
     it "returns true if the Human player's last_input is 'q'" do
       # using a double
-      human_double = instance_double("Human", last_input: 'q')
+      human_double = instance_double("Human", times_to_roll: 'q')
       
       game_with_double = Game.new(human_double)
       expect(game_with_double.over?).to be_truthy
