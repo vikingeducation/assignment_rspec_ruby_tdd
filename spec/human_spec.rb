@@ -19,8 +19,8 @@ describe "Human" do
       expect(human.dice).to be_a(Dice)
     end
 
-    it "sets the Human's last input to nil" do
-      expect(human.last_input).to be_nil
+    it "sets the Human's times_to_roll to nil" do
+      expect(human.times_to_roll).to be_nil
     end
   end
 
@@ -36,9 +36,9 @@ describe "Human" do
     end
   end
 
-  describe "#last_input" do
+  describe "#times_to_roll" do
     it "cannot be publicly modified" do
-      expect { human.last_input = 42 }.to raise_error(NoMethodError)
+      expect { human.times_to_roll = 42 }.to raise_error(NoMethodError)
     end
   end
 
@@ -51,20 +51,20 @@ describe "Human" do
       human.get_input
     end
 
-    it "sets last_input accordingly if the user's input is a valid number" do
+    it "sets times_to_roll accordingly if the user's input is a valid number" do
       allow(human).to receive(:print).and_return(nil)
       allow(human).to receive(:gets).and_return("3")
 
       human.get_input
-      expect(human.last_input).to eq(3)
+      expect(human.times_to_roll).to eq(3)
     end
 
-    it "sets last_input accordingly if the user's input is either 'Q' or 'Q'" do
+    it "sets times_to_roll accordingly if the user's input is either 'Q' or 'Q'" do
       allow(human).to receive(:print).and_return(nil)
       allow(human).to receive(:gets).and_return("Q")
 
       human.get_input
-      expect(human.last_input).to eq("q")
+      expect(human.times_to_roll).to eq("q")
     end
 
     it "asks the user for input again if the user has entered neither a valid number nor 'q'" do
@@ -73,7 +73,7 @@ describe "Human" do
       allow(human).to receive(:gets).and_return("not valid", "3")
 
       human.get_input
-      expect(human.last_input).to eq(3)
+      expect(human.times_to_roll).to eq(3)
     end
   end
 

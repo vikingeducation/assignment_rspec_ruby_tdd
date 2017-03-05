@@ -4,23 +4,23 @@ module DiceThrower
   class Human
     attr_reader :name,
                 :dice,
-                :last_input
+                :times_to_roll
 
     def initialize
       @name = 'You'
       @dice = Dice.new
-      @last_input = nil
+      @times_to_roll = nil
     end
 
     def get_input
       loop do
         print "Please enter number of dice to throw > "
         input = gets.chomp.downcase
-        @last_input = input == 'q' ? input : input.to_i
+        @times_to_roll = input == 'q' ? input : input.to_i
 
-        break if @last_input == 'q'
+        break if @times_to_roll == 'q'
 
-        if @last_input == 0
+        if @times_to_roll == 0
           puts "That equals 0 dice to throw. Please try again."
         else
           break
