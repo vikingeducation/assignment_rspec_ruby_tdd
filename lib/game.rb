@@ -17,11 +17,27 @@ module DiceThrower
 
     def play
       print_instructions
+      
+      loop do
+        human.get_input
 
-      num_rolls = human.get_input
+        quit if over?
 
-      human_roll = human.roll_dice(num_rolls)
-      computer_roll = computer.roll_dice(num_rolls)
+        human_roll = human.roll_dice(human.times_to_roll)
+        computer_roll = computer.roll_dice(human.times_to_roll)
+
+        puts "#{human.name} rolled: #{human_roll}"
+        puts "#{computer.name} rolled: #{computer_roll}"
+        puts "It's a tie!" if tie?(human_roll, computer_roll)
+          
+        if human_roll > computer_roll
+          increment_human_score
+        else
+          increment_computer_score
+        end
+
+        display_current_scores
+      end
     end
 
     def increment_human_score
@@ -37,12 +53,21 @@ module DiceThrower
     end
 
     def over?
-      @human.last_input == 'q'
+      @human.times_to_roll == 'q'
     end
 
     def quit
       puts "Goodbye!"
       exit
+    end
+
+    def display_current_scores
+      puts
+      puts "***** SCORE *****"
+      puts "#{human.name}: #{human_score} wins"
+      puts "#{computer.name}: #{computer_score} wins"
+      puts "*****************"
+      puts
     end
 
     def print_instructions
@@ -54,4 +79,8 @@ module DiceThrower
       puts
     end
   end
+end
+
+if $0 == __FILE__
+  DiceThrower::Game.new.play
 end
