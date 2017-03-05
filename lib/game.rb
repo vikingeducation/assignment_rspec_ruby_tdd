@@ -1,6 +1,5 @@
-require 'dice'
-require 'human'
-require 'computer'
+require_relative './human'
+require_relative './computer'
 
 module DiceThrower
   class Game
@@ -18,8 +17,6 @@ module DiceThrower
 
     def play
       print_instructions
-
-      human_input = self.human.get_input
     end
 
     def increment_human_score
