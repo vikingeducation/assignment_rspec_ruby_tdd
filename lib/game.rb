@@ -32,7 +32,7 @@ module DiceThrower
           
         if human_roll > computer_roll
           increment_human_score
-        else
+        elsif computer_roll > human_roll
           increment_computer_score
         end
 
