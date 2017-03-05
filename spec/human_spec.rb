@@ -18,6 +18,10 @@ describe "Human" do
     it "gives the Human a single dice" do
       expect(human.dice).to be_a(Dice)
     end
+
+    it "sets the Human's last input to nil" do
+      expect(human.last_input).to be_nil
+    end
   end
 
   describe "#name" do
@@ -29,6 +33,12 @@ describe "Human" do
   describe "#dice" do
     it "cannot be overwritten after it's set on initialize" do
       expect { human.dice = nil }.to raise_error(NoMethodError)
+    end
+  end
+
+  describe "#last_input" do
+    it "cannot be publicly modified" do
+      expect { human.last_input = 42 }.to raise_error(NoMethodError)
     end
   end
 
