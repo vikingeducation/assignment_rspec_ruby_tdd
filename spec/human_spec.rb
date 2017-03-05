@@ -43,22 +43,28 @@ describe "Human" do
   end
 
   describe "#get_input" do
-    it "returns the Human's input for valid integer inputs" do
+    it "gets input from the user" do
       allow(human).to receive(:print).and_return(nil)
-      allow(human).to receive(:gets).and_return("5")
-      expect(human.get_input).to eq(5)
+      allow(human).to receive(:gets).and_return("3")
+      expect(human).to receive(:gets)
+
+      human.get_input
     end
 
-    it "returns the Human's input as 'q' if it's 'Q'" do
+    it "sets last_input accordingly if the user's input is a valid number" do
+      allow(human).to receive(:print).and_return(nil)
+      allow(human).to receive(:gets).and_return("3")
+
+      human.get_input
+      expect(human.last_input).to eq(3)
+    end
+
+    it "sets last_input accordingly if the user's input is either 'Q' or 'Q'" do
       allow(human).to receive(:print).and_return(nil)
       allow(human).to receive(:gets).and_return("Q")
-      expect(human.get_input).to eq("q")
-    end
 
-    it "returns the Human's input as 'q' if it's 'q'" do
-      allow(human).to receive(:print).and_return(nil)
-      allow(human).to receive(:gets).and_return("q")
-      expect(human.get_input).to eq("q")
+      human.get_input
+      expect(human.last_input).to eq("q")
     end
   end
 

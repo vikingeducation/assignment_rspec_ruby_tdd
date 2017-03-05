@@ -13,17 +13,9 @@ module DiceThrower
     end
 
     def get_input
-      input = nil
-      loop do
-        print "Enter number of dice to throw > "
-        input = gets.chomp.downcase
-
-        break if input == "q"
-
-        break unless input.to_i == 0 
-      end
-
-      input == 'q' ? 'q' : input.to_i
+      print "Please enter number of dice to throw > "
+      input = gets.chomp.downcase
+      @last_input = input == 'q' ? input : input.to_i
     end
 
     def roll_dice(num_rolls)
