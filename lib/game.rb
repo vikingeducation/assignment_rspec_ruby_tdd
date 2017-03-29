@@ -4,19 +4,20 @@ class Game
   def initialize
     @player1 = Player.new
     @conrad = Player.new
-    @stop = false
   end
 
   def play
+
+    
     info
-    until @stop do #main
+    stop = false
+    until stop do #main
       number_of_dice = number
       valid_input(number_of_dice)
       @player1.turn(number_of_dice)
       @conrad.turn(number_of_dice)
       render(@player1.round_total, @conrad.round_total)
-      answer = ask_to_quit
-      evaluate_answer(answer)
+      stop = ask_to_quit
     end #main
     final_display
   end #end play
@@ -51,16 +52,7 @@ class Game
   def ask_to_quit
     puts "Press 'q' to quit or any other key to keep playing"
     answer = gets.chomp
-    return answer
-  end
-
-  def evaluate_answer(answer)
-    if answer == "q"
-      @stop = true
-      return @stop
-    else
-      return @stop
-    end
+   return answer == "q"
   end
 
   def final_display
