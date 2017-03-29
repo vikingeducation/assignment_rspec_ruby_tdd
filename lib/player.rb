@@ -9,10 +9,9 @@ class Player
   def turn(number)
     @round_total = 0
     number.times do
-      die = Dice.new
-      single_roll = die.single_roll
-      @round_total += single_roll
+      @round_total += Dice.single_roll
     end
+    @running_total += @round_total
     return @round_total
   end
 end

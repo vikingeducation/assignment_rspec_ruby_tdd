@@ -4,20 +4,21 @@ class Game
   def initialize
     @player1 = Player.new
     @conrad = Player.new
+    @stop = false
   end
 
   def play
     info
-    loop do #main
-        number_of_dice = number
-        valid_input(number_of_dice)
+    until @stop do #main
+      number_of_dice = number
+      valid_input(number_of_dice)
       @player1.turn(number_of_dice)
       @conrad.turn(number_of_dice)
       render(@player1.round_total, @conrad.round_total)
-      if stop?
-        break
-      end
+      answer = ask_to_quit
+      evaluate_answer(answer)
     end #main
+    final_display
   end #end play
 
   private
@@ -31,7 +32,7 @@ class Game
     puts "Enter how many dice you'd like to throw."
     number_of_dice = gets.chomp.to_i
     return number_of_dice
-  end
+  end #end number
 
   def valid_input(number_of_dice)
     if number_of_dice.is_a?Integer
@@ -39,16 +40,33 @@ class Game
     else
       number_of_dice = number
     end
-  end
+  end # end valid_input
 
   def render(player1_stat, conrad_stat)
     puts "Score:"
-    puts "Player 1: #{player1_stat}"
-    puts "Conrad:   #{conrad_stat}"
+    puts "Player:  #{player1_stat}"
+    puts "Conrad:  #{conrad_stat}"
   end #end render
 
-  def stop
-    return true
+  def ask_to_quit
+    puts "Press 'q' to quit or any other key to keep playing"
+    answer = gets.chomp
+    return answer
+  end
+
+  def evaluate_answer(answer)
+    if answer == "q"
+      @stop = true
+      return @stop
+    else
+      return @stop
+    end
+  end
+
+  def final_display
+    puts "Here is your running total score:"
+    render(@player1.running_total, @conrad.running_total)
+    puts "Thanks for playing."
   end
 
 end #end Game
