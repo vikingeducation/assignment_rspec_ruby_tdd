@@ -1,0 +1,3 @@
+class Dice
+  #code
+end
