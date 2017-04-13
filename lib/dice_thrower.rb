@@ -42,3 +42,6 @@ class DiceThrower
     rolls.inject(:+)
   end
 end
+
+dt = DiceThrower.new(ui: DiceUI.new, scorer: ScoreKeeper.new)
+dt.throw

@@ -12,7 +12,7 @@ class DiceUI
     EOS
   end
 
-  def prompt_user
+  def prompt_player
     print 'Enter number of dice to throw > '
     gets.chomp
   end
