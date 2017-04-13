@@ -1,4 +1,5 @@
 require_relative './dice_ui'
+require_relative './score_keeper'
 
 class DiceThrower
   attr_reader :ui
