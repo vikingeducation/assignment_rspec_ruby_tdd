@@ -1,3 +1,5 @@
+require_relative './dice_ui'
+
 class DiceThrower
   attr_reader :ui
 
