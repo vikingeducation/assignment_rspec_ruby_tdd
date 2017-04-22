@@ -10,7 +10,7 @@ def stock_picker(stock_prices)
     stock_prices[(buying_day_index + 1)..-1].each_with_index do |selling_price, selling_day_index| 
       if selling_price - buying_price > profit 
         profit = selling_price - buying_price
-        best_days = [buying_day_index, buying_day_index + selling_day_index + 1]
+        best_days = [buying_day_index, buying_day_index + 1 + selling_day_index]
       end
     end
   end
