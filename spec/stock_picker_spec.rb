@@ -6,6 +6,12 @@ describe 'stock_picker' do
   it 'takes array of stock prices per day and outputs most profitable pair of days to buy and sell' do
     expect{stock_picker(prices)}.to output("2\n6\n").to_stdout
   end
+  it "returns correct profitable pair if first day is the highest price" do
+    expect{stock_picker(prices)}.to output("2\n6\n").to_stdout
+  end
+  it "returns correct profitable pair if the last day is the lowest price" do
+    expect{stock_picker(prices)}.to output("2\n6\n").to_stdout
+  end
   it 'raises an error if arg is not an array' do
     expect{stock_picker(price)}.to raise_error
   end
