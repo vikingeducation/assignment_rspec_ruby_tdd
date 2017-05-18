@@ -1,4 +1,4 @@
-def anagrams(word)
+def anas(word)
   sorted_input = word.split("").sort
   anagrams_array = Array.new
   dictionary_array = File.readlines("enable.txt")
