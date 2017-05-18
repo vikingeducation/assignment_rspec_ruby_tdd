@@ -1,5 +1,5 @@
 def stock_picker(prices)
-  if prices.is_a? Array
+  if (prices.is_a? Array) && (prices.length >= 2)
     profit = 0
     days = []
     (prices.length - 1).times do |low|
