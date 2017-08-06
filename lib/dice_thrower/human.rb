@@ -7,8 +7,17 @@ module DiceThrower
     end
 
     def roll_dice
-      answer = ask 'Enter number of dice to throw >', Integer
-      super(answer)
+      answer = ask 'Enter number of dice to throw >' do |q|
+        q.validate = /\A\d+|q\z/i
+      end
+
+      return (@quit = true) if answer == 'q'
+
+      super(answer.to_i)
+    end
+
+    def quit?
+      !!@quit
     end
   end
 end
