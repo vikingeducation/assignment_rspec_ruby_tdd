@@ -1,19 +1,14 @@
 require 'highline/import'
 
 module DiceThrower
-  class Human
-    attr_reader :name, :dices_rolled
-
+  class Human < Player
     def initialize(name = 'you', dice = Dice.new)
-      @name = name
-      @dice = dice
+      super(name, dice)
     end
 
     def roll_dice
       answer = ask 'Enter number of dice to throw >', Integer
-      @dices_rolled = []
-
-      answer.times { @dices_rolled << @dice.roll }
+      super(answer)
     end
   end
 end
