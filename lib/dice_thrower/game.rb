@@ -32,11 +32,3 @@ module DiceThrower
     end
   end
 end
-
-# display instroctions
-# roll human
-# pass human to computer and play computer
-# check score
-  # player with highier score wins
-  # if tie no score is added
-# loop until player enters 'q'
