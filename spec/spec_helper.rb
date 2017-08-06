@@ -98,3 +98,5 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+require 'require_all'
+require_all 'lib'

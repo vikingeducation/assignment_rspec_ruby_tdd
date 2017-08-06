@@ -1,5 +1,3 @@
-require 'dice_thrower/dice'
-
 RSpec.describe DiceThrower::Dice do
   describe '#initialize' do
     it 'defaults to six sides' do

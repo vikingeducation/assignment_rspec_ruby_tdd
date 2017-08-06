@@ -1,5 +1,3 @@
-require 'anagram'
-
 RSpec.describe '#anagrams' do
   context 'when there are matches' do
     it 'returns matches in upcase' do
