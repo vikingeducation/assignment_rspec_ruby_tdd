@@ -20,8 +20,9 @@ describe '#stock_picker' do
 
   context 'during a losing situation' do
     it "raises a losing error" do
-       expect { stock_picker(declining_prices) }.to raise_error 'Losing situation'
+       expect(stock_picker(declining_prices)).to eq([1,1])
+       # expect { stock_picker(declining_prices) }.to raise_error 'Losing situation'
     end
   end
-
 end
+
