@@ -1,5 +1,46 @@
 require 'dice_thrower'
 
+describe Game do
+
+  before(:each) do
+    allow( game ).to receive( :puts ).and_return( nil )
+  end
+
+  let(:game) { Game.new }
+
+  it("is a Game") { expect(game).to be_a(Game) }
+
+  describe '#initialize' do
+    it("has a default dice qty of 0") { expect(game.qty_dice).to eq(0) }
+    it("has a default play_again value of true") { expect(game.play_again).to eq(true) }
+    it("has 2 players by default") { expect(game.players.count).to eq(2) }
+    it("'s first player is a Human") { expect(game.players[0]).to be_a(Human) }
+    it("'s second player is a Computer") { expect(game.players[1]).to be_a(Computer) }
+  end
+
+  describe '#play' do
+    it "runs #play_round" do
+      allow(game).to receive(:gets).and_return('n')
+      allow(game).to receive(:play_round).and_return("-stubbed-")
+      expect(game).to receive(:play_round).and_return("-stubbed-")
+      game.play
+    end
+
+    it 'runs #play_again?' do
+      allow(game).to receive(:gets).and_return('n')
+      allow(game).to receive(:play_again?).and_return("-stubbed-")
+      expect(game).to receive(:play_again?).and_return("-stubbed-")
+      game.play
+    end
+
+    it 'runs #exit_game' do
+     allow(game).to receive(:gets).and_return('n')
+     allow(game).to receive(:exit_game).and_return("-stubbed-")
+     expect(game).to receive(:exit_game).and_return("-stubbed-")
+     game.play
+   end
+ end
+end
 
 
 describe Die do
