@@ -99,19 +99,22 @@ class Die
     @sides = sides
   end
 
-  def roll
-    result = (1..sides).to_a.sample
-    puts "...#{result}"
-    result
-  end
-
   def roll_all(player_name)
+    puts "rolling..."
     total = 0
     qty.times do
       total += roll
     end
-    puts "#{player_name} rolled a total of #{total}"
+    puts "#{player_name} rolled a total of #{total}",""
     total
+  end
+
+  private
+
+  def roll
+    result = (1..sides).to_a.sample
+    puts "...#{result}"
+    result
   end
 end
 
