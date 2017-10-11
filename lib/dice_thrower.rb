@@ -7,6 +7,7 @@ require 'pry'
 # basis until the game is exited.
 
 class Game
+  attr_reader :qty_dice, :players, :play_again
 
   def initialize
     @qty_dice = 0
@@ -16,10 +17,14 @@ class Game
 
   def play
     welcome_player
-    while @play_again == true
+    until @play_again == false
       play_round
+      @play_again = play_again?
     end
+    exit_game
   end
+
+  private
 
   def welcome_player
     puts "Welcome to Dice Thrower"
@@ -38,7 +43,6 @@ class Game
     evaluate_round_winner
     sleep 1
     display_scores
-    play_again?
   end
 
   def request_dice_count
@@ -72,13 +76,7 @@ class Game
   def play_again?
     puts "Play again? y | n"
     response = gets.chomp.downcase
-    if response == 'n'
-      exit_game
-    elsif response == 'q'
-      exit_game
-    else
-      @play_again = true
-    end
+    return false unless response == 'y'
   end
 
   def request_input
