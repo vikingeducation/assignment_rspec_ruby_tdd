@@ -3,6 +3,10 @@ require 'dice_thrower'
 
 
 describe Die do
+  before(:each) do
+    allow( die ).to receive( :puts ).and_return( nil )
+  end
+
   let(:qty_dice) { 3 }
   let(:sides) { 6 }
   let(:die) { Die.new(qty_dice, sides) }
