@@ -64,4 +64,44 @@ describe Die do
 end
 
 
+describe Player do
+  let(:player) { Player.new }
+
+  it("is a Player") { expect(player).to be_a(Player) }
+
+  describe '#initialize' do
+    it("has a default round_score of 0") { expect(player.round_score).to eq(0) }
+    it("has a default game_score of 0") { expect(player.game_score).to eq(0) }
+  end
+end
+
+
+describe Human do
+  let(:human) { Human.new }
+  let(:computer) { Computer.new }
+
+  it("is a Human") { expect(human).to be_a(Human) }
+  it("is a subclass of Player") { expect(human).to be_a(Player) }
+
+  describe '#initialize' do
+    it("has a default round_score of 0") { expect(human.round_score).to eq(0) }
+    it("has a default game_score of 0") { expect(human.game_score).to eq(0) }
+    it("has a different name than Computer's name") { expect(human.name).to_not eq(computer.name) }
+  end
+end
+
+describe Computer do
+  let(:computer) { Computer.new }
+  let(:human) { Human.new }
+
+  it("is a Computer") { expect(computer).to be_a(Computer) }
+  it("is a subclass of Player") { expect(computer).to be_a(Player) }
+
+  describe '#initialize' do
+    it("has a default round_score of 0") { expect(computer.round_score).to eq(0) }
+    it("has a default game_score of 0") { expect(computer.game_score).to eq(0) }
+    it("has a different name than Human's name") { expect(computer.name).to_not eq(human.name) }
+  end
+
+end
 
