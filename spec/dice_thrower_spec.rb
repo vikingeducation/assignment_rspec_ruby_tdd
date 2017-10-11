@@ -1,23 +1,3 @@
-=begin
-
-initiate game
-unless input == 'q'
-welcome player
-explain rules
-
-until input == 'q'
-player 1 turn: ask how many dice will be rolled in this game
-rolls all dice & records score
-player 2 turn: rolls all dice & records score
-compare round scores
-determine round winner
-award point to round winner
-announce round winner
-announce current game winner
-
-
-=end
-
 require 'dice_thrower'
 
 

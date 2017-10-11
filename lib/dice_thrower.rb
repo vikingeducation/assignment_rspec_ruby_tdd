@@ -140,7 +140,3 @@ class Computer < Player
 end
 
 # Game.new.play
-# p game.play
-
-# p Player.new.round_score
-# p Human.new.round_score
