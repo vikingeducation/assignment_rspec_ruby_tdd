@@ -47,7 +47,7 @@ class Game
   end
 
   def roll_dice(player_name)
-    dice = Die.new(@qty_dice)
+    dice = Die.new(@qty_dice, 6)
     dice.roll_all(player_name)
   end
 
@@ -94,20 +94,25 @@ end
 
 
 class Die
-  def initialize(qty)
+  attr_reader :qty, :sides
+
+  def initialize(qty, sides)
     @qty = qty
+    @sides = sides
   end
 
   def roll
-    (1..6).to_a.sample
+    result = (1..sides).to_a.sample
+    puts "...#{result}"
+    result
   end
 
   def roll_all(player_name)
     total = 0
-    @qty.times do
+    qty.times do
       total += roll
     end
-    puts "#{player_name} rolled #{total}"
+    puts "#{player_name} rolled a total of #{total}"
     total
   end
 end
