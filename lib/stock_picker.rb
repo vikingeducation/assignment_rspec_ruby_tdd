@@ -3,7 +3,7 @@ def stock_picker(prices)
   raise "nope" if prices.sort { |a, b| b <=> a } == prices
 
   if prices[0] == prices.min
-    return [0, prices.max.index]
+    return [0, prices.index(prices.max)]
   else
     max_diff = 0
     best_days = [nil, nil]
@@ -18,5 +18,4 @@ def stock_picker(prices)
         
   end
   best_days
-
 end
