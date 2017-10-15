@@ -59,13 +59,13 @@ class Game
 
   def game_loop
     loop do
-    prompt_for_number_of_dice
-    player_1.select_number_of_dice
-    compute_totals
-    display_totals
-    display_results
-    break if !play_again?
-  end
+      prompt_for_number_of_dice
+      player_1.select_number_of_dice
+      compute_totals
+      display_totals
+      display_results
+      break if !play_again?
+    end
   end
 
   def play 
