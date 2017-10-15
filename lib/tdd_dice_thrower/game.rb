@@ -57,8 +57,7 @@ class Game
     play_again == 'yes' ? true : false
   end
 
-  def play 
-    greeting
+  def game_loop
     loop do
     prompt_for_number_of_dice
     player_1.select_number_of_dice
@@ -69,6 +68,11 @@ class Game
   end
   end
 
+  def play 
+    greeting
+    game_loop
+  end
+
 end
 
-Game.new.play
+#Game.new.play

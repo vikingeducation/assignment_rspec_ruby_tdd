@@ -37,7 +37,18 @@ describe Game do
       allow(game).to receive(:gets).and_return('no')
       expect(game.play_again?).to be false
     end
+  end
 
+  describe "#play" do 
+    it 'calls greeting' do 
+      allow(game).to receive(:game_loop).and_return(nil)
+      expect(game).to receive(:greeting).and_return(nil)
+      game.play
+    end
+    it 'calls game_loop' do 
+      expect(game).to receive(:game_loop).and_return(nil)
+      game.play
+    end
   end
 
 end
