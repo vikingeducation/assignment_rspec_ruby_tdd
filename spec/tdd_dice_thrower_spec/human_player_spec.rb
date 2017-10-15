@@ -2,7 +2,13 @@ require 'tdd_dice_thrower/human_player'
 
 describe HumanPlayer do 
 
-  let(:player) { HumanPlayer.new }
+  let(:player) { HumanPlayer.new('Mike') }
+
+  describe "#initialize" do 
+    it "should take one argument" do 
+      expect{HumanPlayer.new}.to raise_error(ArgumentError)
+    end
+  end
 
   describe "#select_number_of_dice" do 
     it "gets number of dice from the user" do 

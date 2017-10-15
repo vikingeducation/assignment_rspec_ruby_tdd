@@ -3,9 +3,14 @@ require 'tdd_dice_thrower/human_player'
 
 describe 'ComputerPlayer' do 
 
-  let(:comp_player) { ComputerPlayer.new }
-  let(:hum_player) { HumanPlayer.new }
+  let(:comp_player) { ComputerPlayer.new('Kit') }
+  let(:hum_player) { HumanPlayer.new('Mike') }
 
+  describe "#initialize" do 
+    it "should take one argument" do 
+      expect{ComputerPlayer.new}.to raise_error(ArgumentError)
+    end
+  end
 
   describe "#roll_dice" do 
     before do 

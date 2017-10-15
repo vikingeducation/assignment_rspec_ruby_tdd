@@ -1,4 +1,9 @@
 class ComputerPlayer
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
+  end
 
   def roll_dice 
     rolls = []

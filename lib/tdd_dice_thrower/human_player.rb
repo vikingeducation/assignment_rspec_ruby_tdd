@@ -1,5 +1,9 @@
 class HumanPlayer
-  attr_reader :number_of_dice
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
+  end
 
   def select_number_of_dice
     $number_of_dice = gets.chomp.to_i

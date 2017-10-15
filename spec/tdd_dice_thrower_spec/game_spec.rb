@@ -27,4 +27,17 @@ describe Game do
     end
   end
 
+  describe "#play_again?" do 
+    it "returns true if HumanPlayer enters 'yes'" do 
+      allow(game).to receive(:gets).and_return('yes')
+      expect(game.play_again?).to be true
+    end
+
+    it "returns false if HumanPlayer enters 'no'" do 
+      allow(game).to receive(:gets).and_return('no')
+      expect(game.play_again?).to be false
+    end
+
+  end
+
 end
