@@ -3,15 +3,23 @@ require 'stock_picker'
 describe 'stock_picker' do
 
   it 'raiese and error when non-Array is passed in' do 
-    expect{stock_picker('hello')}.to raise_error(NoMethodError)
+    expect{stock_picker('hello')}.to raise_error("nope")
   end
 
   it 'raises an error if passed-in Array has fewer than two elements' do 
-    expect{stock_picker([1])}.to raise_error(RuntimeError)
+    expect{stock_picker([1])}.to raise_error("nope")
   end 
 
+  it "raises an error if any of the arrays values are non-numeric" do 
+    expect{stock_picker([20, 15, 'hi'])}.to raise_error("nope")
+  end
+
+  it "raises an error if any of the arrays values are negative" do 
+    expect{stock_picker([1, 15, -1])}.to raise_error("nope")
+  end  
+
   it "raises an error if the Array's values are descending" do 
-    expect{stock_picker([20, 15, 10])}.to raise_error(RuntimeError)
+    expect{stock_picker([20, 15, 10])}.to raise_error("nope")
   end
 
   it 'returns Array of indeces of passed-in Array indicating the best days to buy and sell stock' do 
