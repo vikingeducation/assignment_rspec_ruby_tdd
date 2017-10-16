@@ -19,11 +19,11 @@ describe Game do
     end
 
     it 'intializes human_wins to 0' do 
-      expect(game.human_wins).to eql(0)
+      expect(game.human_wins).to eq(0)
     end
 
     it 'intializes computer_wins to 0' do 
-      expect(game.computer_wins).to eql(0)
+      expect(game.computer_wins).to eq(0)
     end
   end
 
