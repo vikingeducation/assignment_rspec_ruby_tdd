@@ -19,7 +19,7 @@ describe 'ComputerPlayer' do
     end
 
     it "creates a number_of_dice-sized Array" do 
-      expect(comp_player.roll_dice.size).to eql($number_of_dice)
+      expect(comp_player.roll_dice.size).to eq($number_of_dice)
     end
   end
 end

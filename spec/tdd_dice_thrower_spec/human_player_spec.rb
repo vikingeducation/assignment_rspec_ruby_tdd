@@ -13,7 +13,7 @@ describe HumanPlayer do
   describe "#select_number_of_dice" do 
     it "gets number of dice from the user" do 
       allow(player).to receive(:gets).and_return('5')
-      expect(player.select_number_of_dice).to eql(5)
+      expect(player.select_number_of_dice).to eq(5)
     end
   end
 
@@ -23,7 +23,7 @@ describe HumanPlayer do
       player.select_number_of_dice
     end
     it "creates a @number_of_dice-sized Array" do 
-      expect(player.roll_dice.size).to eql(5)
+      expect(player.roll_dice.size).to eq(5)
     end
   end
 end
