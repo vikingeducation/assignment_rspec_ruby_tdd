@@ -21,8 +21,8 @@ class Game
   end
   
   def compute_totals
-    @player_1_total = player_1.roll_dice.reduce(:+)
-    @player_2_total = player_2.roll_dice.reduce(:+)
+    @player_1_total = player_1.roll_dice(@number_of_dice).reduce(:+)
+    @player_2_total = player_2.roll_dice(@number_of_dice).reduce(:+)
   end
 
   def display_totals
@@ -60,7 +60,7 @@ class Game
   def game_loop
     loop do
       prompt_for_number_of_dice
-      player_1.select_number_of_dice
+      @number_of_dice = player_1.select_number_of_dice
       compute_totals
       display_totals
       display_results
@@ -75,4 +75,4 @@ class Game
 
 end
 
-#Game.new.play
+Game.new.play

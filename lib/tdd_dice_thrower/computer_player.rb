@@ -5,9 +5,9 @@ class ComputerPlayer
     @name = name
   end
 
-  def roll_dice 
+  def roll_dice(number_of_dice) 
     rolls = []
-    $number_of_dice.times { rolls << (1..6).to_a.sample }
+    number_of_dice.times { rolls << (1..6).to_a.sample }
     rolls
   end
 end
