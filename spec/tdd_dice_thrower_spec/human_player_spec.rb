@@ -18,12 +18,8 @@ describe HumanPlayer do
   end
 
   describe "#roll_dice" do 
-    before do 
-      allow(player).to receive(:gets).and_return('5')
-      player.select_number_of_dice
-    end
     it "creates a @number_of_dice-sized Array" do 
-      expect(player.roll_dice.size).to eq(5)
+      expect(player.roll_dice(5).size).to eq(5)
     end
   end
 end

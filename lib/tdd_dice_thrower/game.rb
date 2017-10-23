@@ -3,8 +3,8 @@ require_relative 'computer_player'
 require 'pry'
 class Game 
 
-  attr_reader :player_1, :player_2, :player_1_total, :player_2_total
-  attr_accessor :human_wins, :computer_wins
+  attr_reader :player_1, :player_2
+  attr_accessor :human_wins, :computer_wins, :number_of_dice, :player_1_total, :player_2_total
   def initialize
     @player_1 = HumanPlayer.new('Mike')
     @player_2 = ComputerPlayer.new('Kit')
@@ -57,13 +57,17 @@ class Game
     play_again == 'yes' ? true : false
   end
 
+  def single_game
+    prompt_for_number_of_dice
+    @number_of_dice = player_1.select_number_of_dice
+    compute_totals
+    display_totals
+    display_results
+  end
+
   def game_loop
     loop do
-      prompt_for_number_of_dice
-      @number_of_dice = player_1.select_number_of_dice
-      compute_totals
-      display_totals
-      display_results
+      single_game
       break if !play_again?
     end
   end
@@ -75,4 +79,4 @@ class Game
 
 end
 
-Game.new.play
+#Game.new.play

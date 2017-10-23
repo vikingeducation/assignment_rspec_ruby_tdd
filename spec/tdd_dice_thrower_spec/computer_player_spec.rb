@@ -13,13 +13,8 @@ describe 'ComputerPlayer' do
   end
 
   describe "#roll_dice" do 
-    before do 
-      allow(hum_player).to receive(:gets).and_return('5')
-      hum_player.select_number_of_dice
-    end
-
     it "creates a number_of_dice-sized Array" do 
-      expect(comp_player.roll_dice.size).to eq($number_of_dice)
+      expect(comp_player.roll_dice(5).size).to eq(5)
     end
   end
 end
